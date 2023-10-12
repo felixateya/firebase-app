@@ -1,38 +1,223 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.register,
+.login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(./assets/authBg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.details {
+  width: 400px;
+  height: max-content;
+  min-height: 350px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
+  background-color: rgba(46, 16, 5, 0.516);
+  /* border: 3px solid green; */
+  padding: 40px 10px 10px 10px;
+  backdrop-filter: blur(2px);
+  box-shadow: inset 12px 12px 12px #070707, inset -12px -12px 12px #1d1b1b;
+  transition: 0.3s ease-in-out;
+
+  && h2 {
+    color: #fff;
+    text-align: center;
+  }
+
+  && input {
+    width: 70%;
+    padding: 15px;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 20px;
+    margin-left: 40px;
+    background-color: transparent;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-bottom: 3px solid #7fff;
+    color: #fff;
+    font-size: 16px;
+    caret-color: white;
+  }
+  && button {
+    width: 80%;
+    padding: 15px;
+    background-color: green;
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 40px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  && button:hover {
+    background-color: #fff;
+    color: green;
+  }
+  && div {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 40px;
+    padding: 15px 10px;
+
+    && a {
+      text-decoration: none;
+      color: lightblue;
+      font-size: 16px;
+      transition: 0.2s ease-in-out;
+    }
+    && a:hover {
+      color: #fff;
+    }
+  }
+}
+
+::placeholder {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar {
+  width: 98%;
+  height: 8%;
+  background-color: #77777734;
+  display: flex;
+  margin-left: 1%;
+  align-items: center;
+  border-radius: 7px;
+  box-shadow: inset 1px 1px 3px 3px green, inset -1px -1px 3px 3px green;
+
+  && h3 {
+    color: #fff;
+    font-size: 26px;
+    margin-left: 20px;
+  }
+
+  && .links {
+    margin-left: 70%;
+    display: flex;
+    justify-content: space-between;
+
+    && a {
+      text-decoration: none;
+      font-size: 18px;
+      color: wheat;
+      margin-left: 17px;
+      font-weight: 600;
+      transition: 0.2s ease-in-out;
+    }
+
+    && a:hover{
+      color: #f7f7f7;
+    }
+  }
+}
+
+.home {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/homeBg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 20px;
+
+  && h1 {
+    color: rgb(25, 172, 222);
+    background-color: #07070773;
+  }
+
+  && .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 91%;
+    
+
+    && button {
+      width: 300px;
+      padding: 15px;
+      background-color: green;
+      color: #fff;
+      margin-left: 40px;
+      margin-top: 40px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+    }
+    && button:hover {
+      background-color: #fff;
+      color: green;
+    }
+  }
+}
+
+/* LOADER START */
+.loader {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width:100%;
+  height:100%;
+  position:absolute;
+  z-index: 2;
+  background-color: #0000007e;
 }
 
-.App-link {
-  color: #61dafb;
+.bar {
+  display: inline-block;
+  width: 3px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 10px;
+  animation: scale-up4 1s linear infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.bar:nth-child(2) {
+  height: 60px;
+  margin: 0 5px;
+  animation-delay: .25s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: .5s;
+}
+
+@keyframes scale-up4 {
+  20% {
+    background-color: #ffff;
+    transform: scaleY(1.5);
   }
-  to {
-    transform: rotate(360deg);
+
+  40% {
+    transform: scaleY(1);
   }
 }
+/* LOADER END */
+
+
