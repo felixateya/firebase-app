@@ -4,7 +4,6 @@ import Navbar from "../Components/Navbar";
 import Loader from "../Components/Loader";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import {
-  doc,
   getDocs,
   collection,
   getFirestore,
