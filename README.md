@@ -1,10 +1,13 @@
 Firebase-app
+
 Description: A simple firebase app that can authenticate a user and fetch user data from firestore and display it on the homepage.
 
 Technologies Used
-React
-  Firebase
+- React
+- Firebase
+  
 Getting Started
+
   Prerequisites
     Node.js installed on your machine
     Firebase project set up on the Firebase Console
