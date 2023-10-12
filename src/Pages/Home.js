@@ -64,6 +64,11 @@ function Home() {
     //   navigate("/");
     // }, 3000)
   };
+
+const style = {
+  backgroundColor: "transparent"
+}
+
   return (
     <div className="home">
       <Navbar user={user}/>
@@ -72,7 +77,7 @@ function Home() {
           Welcome Home <span>{user}</span>
         </h1>
         <button onClick={signout}>Log Out</button>
-        {isLoading && <Loader />}
+        {isLoading && <Loader style={style} />}
       </div>
     </div>
   );

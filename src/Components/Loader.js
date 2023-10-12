@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Loader() {
+function Loader({style}) {
   return (
-    <div className="loader">
+    <div style={style} className="loader">
     <span className="bar"></span>
     <span className="bar"></span>
     <span className="bar"></span>
