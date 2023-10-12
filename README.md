@@ -1,8 +1,6 @@
 Firebase-app
 Description: A simple firebase app that can authenticate a user and fetch user data from firestore and display it on the homepage.
 
-
-...
 Technologies Used
 React
   Firebase
