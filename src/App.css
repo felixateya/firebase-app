@@ -196,14 +196,13 @@
   height: 100%;
   position: absolute;
   z-index: 100;
-  /* background-color: #0000007e; */
 }
 
 .bar {
   display: inline-block;
   width: 4px;
   height: 30px;
-  background-color: rgba(197, 15, 15, 0.5);
+  background-color: #cdbaa1;
   border-radius: 10px;
   animation: scale-up4 1s linear infinite;
 }
@@ -220,7 +219,7 @@
 
 @keyframes scale-up4 {
   20% {
-    background-color: #f74848;
+    background-color: #413029;
     transform: scaleY(1.5);
   }
 
