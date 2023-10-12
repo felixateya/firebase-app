@@ -47,19 +47,20 @@ function Home() {
     setIsLoading(true);
 
     const auth = getAuth();
-    signOut(auth)
+
+    setTimeout(() => {
+      setIsLoading(true)
+      signOut(auth)
       .then(() => {
         // Sign-out successful.
 
-        setTimeout(() => {
-          navigate("/Login");
-        }, 3000);
-
-        // navigate("/")
+        navigate("/Login");
       })
       .catch((error) => {
         // An error happened.
       });
+        }, 3000);
+    
     // setTimeout( ()=>{
     //   navigate("/");
     // }, 3000)
