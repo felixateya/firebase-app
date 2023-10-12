@@ -46,7 +46,7 @@ const create =()=>{
       userName: name,
       userEmail: email,
     }).then(()=>{
-      navigate('/Home')
+      navigate('/')
     }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
