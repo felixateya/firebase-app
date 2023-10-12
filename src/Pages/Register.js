@@ -69,9 +69,13 @@ const create =()=>{
   //   }, 3000)
 }
 
+const handleSubmit = (e)=>{
+  e.preventDefault()
+}
+
   return (
     <div className="register">
-      <div className="details">
+      <form className="details" onSubmit={handleSubmit}>
         <h2>Create Account</h2>
         <input type="text" ref={nameRef} placeholder="Enter your full name" />
         <input type="email" ref={emailRef} placeholder="Enter your email address" />
@@ -81,7 +85,7 @@ const create =()=>{
             <p>Already a User?</p>
             <Link to="/Login" alt="Registeration">Sign In.</Link>
         </div>
-      </div>
+      </form>
       {isLoading && <Loader/>}
     </div>
   );

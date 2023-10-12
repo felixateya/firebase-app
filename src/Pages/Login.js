@@ -46,18 +46,23 @@ if(!email && !password){
 
 
   }
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+  }
+
   return (
     <div className='login'>
-        <div className="details">
+        <form className="details" onSubmit={handleSubmit}>
         <h2>Login Page</h2>
-            <input type="email" ref={emailRef}  placeholder='Enter your email address'/>
+            <input type="email" ref={emailRef}   placeholder='Enter your email address'/>
             <input type="password" ref={passwordRef}  placeholder='Enter your password'/>
             <button onClick={signin}>Log In</button>
             <div>
             <p>Don't have an Account?</p>
             <Link to="/Register" alt="Registeration">Sign Up.</Link>
         </div>
-        </div>
+        </form>
         {isLoading && <Loader/>}
     </div>
   )
