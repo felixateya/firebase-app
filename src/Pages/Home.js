@@ -19,6 +19,8 @@ function Home() {
   const auth = getAuth();
   const db = getFirestore(app);
 
+
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -41,6 +43,9 @@ function Home() {
       }
     });
   });
+
+
+  
 
   const signout = () => {
     setIsLoading(true);
@@ -74,7 +79,7 @@ const style = {
       <Navbar user={user}/>
       <div className="main">
         <h1>
-          Welcome Home <span>{user}</span>
+          Welcome <span>{user}</span>
         </h1>
         <button onClick={signout}>Log Out</button>
         {isLoading && <Loader style={style} />}
