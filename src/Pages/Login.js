@@ -67,7 +67,15 @@ function Login() {
           ref={passwordRef}
           placeholder="Enter your password"
         />
-        {error && <p className="error">Login failed! Please check your email address and password, and then try again.</p>}
+        {error && <p className="error">
+        {
+          error === "Firebase: Error (auth/invalid-login-credentials)." && "Login failed! Please check your email address and password, and then try again."
+        }
+        {
+          error === "Firebase: Error (auth/network-request-failed)." && "Network Error. Please check your internet connection."
+        }
+        
+        </p>}
         <button onClick={signin}>Log In</button>
         <div>
           <p>Don't have an Account?</p>
