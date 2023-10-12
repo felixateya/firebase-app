@@ -27,7 +27,7 @@
   /* border: 3px solid #413029; */
   padding: 40px 10px 10px 10px;
   backdrop-filter: blur(2px);
-  box-shadow: inset 12px 12px 12px #070707, inset -12px -12px 12px #1d1b1b;
+  box-shadow: inset 12px 12px 12px rgba(29, 27, 27, 0.363), inset -12px -12px 12px rgba(46, 16, 5, 0.389);
   transition: 0.3s ease-in-out;
 
   && h2 {
