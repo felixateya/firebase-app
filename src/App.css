@@ -26,10 +26,12 @@
   background-color: rgba(46, 16, 5, 0.476);
   padding: 40px 10px 10px 10px;
   backdrop-filter: blur(2px);
-  box-shadow: inset 12px 12px 12px rgba(29, 27, 27, 0.363), inset -12px -12px 12px rgba(46, 16, 5, 0.389);
+  box-shadow: inset 12px 12px 12px rgba(29, 27, 27, 0.363),
+    inset -12px -12px 12px rgba(46, 16, 5, 0.389);
   transition: 0.3s ease-in-out;
 
-  && h2 {
+  && h2,
+  h1 {
     color: #cdbaa1;
     text-align: center;
   }
@@ -51,7 +53,7 @@
     caret-color: white;
   }
 
-  && .error{
+  && .error {
     font-size: 16px;
     background-color: #da39279b;
     color: #d7cabb;
@@ -121,7 +123,6 @@
   }
 }
 
-
 ::placeholder {
   color: #ecd592;
   font-size: 16px;
@@ -129,20 +130,19 @@
 }
 
 .navbar {
-  width: 98%;
-  height: 8%;
-  background-color: #07070773;
+  width: 15%;
+  height: 100%;
+  background-color: #070707;
   display: flex;
-  margin-left: 1%;
-  align-items: center;
-  border-radius: 7px;
+  flex-direction: column;
   backdrop-filter: blur(5px);
+  padding-left: 20px;
   box-shadow: inset 1px 1px 3px 3px #413029, inset -1px -1px 3px 3px #413029;
 
   && h3 {
     color: #ecd592;
-    font-size: 26px;
-    margin-left: 20px;
+    font-size: 30px;
+    /* margin-left: 20px; */
     cursor: pointer;
     transition: 0.2s ease-in-out;
   }
@@ -150,16 +150,42 @@
     color: #413029;
   }
 
+&& .profile{
+  display: flex;
+  align-items: center;
+  margin-top: 10vh;
+
+  && .img{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+    background: url(./assets/authBg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    border:5px solid #413029;
+  }
+
+  && p{
+    font-size: 16px;
+    color:#ecd592;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+}
+
   && .links {
-    margin-left: 70%;
+    margin-top: 10vh;
     display: flex;
+    flex-direction: column;
+
     justify-content: space-between;
 
     && a {
       text-decoration: none;
-      font-size: 18px;
+      font-size: 26px;
       color: #ecd592;
-      margin-left: 17px;
+      margin-top: 15px;
       font-weight: 800;
       transition: 0.2s ease-in-out;
     }
@@ -173,11 +199,12 @@
 .home {
   width: 100%;
   height: 100vh;
+  display: flex;
   background: url(./assets/authBg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   position: relative;
 
   && h1 {
@@ -186,8 +213,6 @@
     padding: 5px 10px;
     border-radius: 7px;
   }
-
-  
 
   && .main {
     display: flex;
@@ -217,8 +242,6 @@
     }
   }
 }
-
-
 
 /* LOADER START */
 .loader {

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ function Login() {
     const auth = getAuth();
     if (!email && !password && error) {
       setIsLoading(false);
-      console.log(error);
+      // console.log(error);
     } else {
       setIsLoading(true);
     }
@@ -46,7 +46,7 @@ function Login() {
     // }, 3000)
   };
 
-  console.log(error);
+  // console.log(error);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -54,18 +54,22 @@ function Login() {
   return (
     <div className="login">
       <form className="details" onSubmit={handleSubmit}>
+        <h1>Fiscall LLC</h1>
+        <br/>
         <h2>Login Page</h2>
         <input
           type="email"
           autoComplete="true"
+          required
           ref={emailRef}
-          placeholder="Enter your email address"
+          placeholder="Enter your email address  *"
         />
         <input
           type="password"
           autoComplete="true"
+          required
           ref={passwordRef}
-          placeholder="Enter your password"
+          placeholder="Enter your password  *"
         />
         {error && <p className="error">
         {
@@ -73,6 +77,9 @@ function Login() {
         }
         {
           error === "Firebase: Error (auth/network-request-failed)." && "Network Error. Please check your internet connection."
+        }
+        {
+          error === "Firebase: Error (auth/invalid-email)." && "Enter a valid Email Address."
         }
         
         </p>}
