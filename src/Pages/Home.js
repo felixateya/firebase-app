@@ -63,7 +63,7 @@ function Home() {
       .catch((error) => {
         // An error happened.
       });
-        }, 3000);
+        }, 3500);
     
     // setTimeout( ()=>{
     //   navigate("/");

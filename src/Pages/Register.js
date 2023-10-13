@@ -45,6 +45,7 @@ function Register() {
               const errorCode = err.code;
               const errorMessage = err.message;
               console.log(errorMessage);
+              navigator.vibrate(200)
               // ..
             });
 
