@@ -4,6 +4,7 @@ import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getFirestore } from "firebase/firestore";
 import { app } from "../Firebase";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 function Register() {
   const emailRef = useRef();
@@ -11,6 +12,7 @@ function Register() {
   const nameRef = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
   // const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -86,8 +88,12 @@ function Register() {
           placeholder="Enter your email address *"
           required
         />
+        { visible ? <AiFillEyeInvisible onClick={()=> setVisible(false)} className="eye regis" />  : <AiFillEye onClick={()=> setVisible(true)} className="eye regis" />
+            
+          
+          }
         <input
-          type="password"
+          type={visible ? "text" : "password"}
           ref={passwordRef}
           placeholder="Set your password *"
           required

@@ -3,11 +3,14 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { app } from "../Firebase";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [visible, setVisible] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,10 +37,9 @@ function Login() {
         navigate("/");
       })
       .catch((err) => {
-        
         console.log(err.message);
         setError(err.message);
-        setIsLoading(false)
+        setIsLoading(false);
       });
 
     // setIsLoading(true)
@@ -55,7 +57,7 @@ function Login() {
     <div className="login">
       <form className="details" onSubmit={handleSubmit}>
         <h1>Fiscall LLC</h1>
-        <br/>
+        <br />
         <h2>Login Page</h2>
         <input
           type="email"
@@ -64,25 +66,27 @@ function Login() {
           ref={emailRef}
           placeholder="Enter your email address  *"
         />
+        { visible ? <AiFillEyeInvisible onClick={()=> setVisible(false)} className="eye" />  : <AiFillEye onClick={()=> setVisible(true)} className="eye" />
+            
+          
+        }
         <input
-          type="password"
+          type={visible ? "text" : "password"}
           autoComplete="true"
           required
           ref={passwordRef}
           placeholder="Enter your password  *"
         />
-        {error && <p className="error">
-        {
-          error === "Firebase: Error (auth/invalid-login-credentials)." && "Login failed! Please check your email address and password, and then try again."
-        }
-        {
-          error === "Firebase: Error (auth/network-request-failed)." && "Network Error. Please check your internet connection."
-        }
-        {
-          error === "Firebase: Error (auth/invalid-email)." && "Enter a valid Email Address."
-        }
-        
-        </p>}
+        {error && (
+          <p className="error">
+            {error === "Firebase: Error (auth/invalid-login-credentials)." &&
+              "Login failed! Please check your email address and password, and then try again."}
+            {error === "Firebase: Error (auth/network-request-failed)." &&
+              "Network Error. Please check your internet connection."}
+            {error === "Firebase: Error (auth/invalid-email)." &&
+              "Enter a valid Email Address."}
+          </p>
+        )}
         <button onClick={signin}>Log In</button>
         <div>
           <p>Don't have an Account?</p>

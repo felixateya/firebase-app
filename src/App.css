@@ -54,6 +54,18 @@ h1 {
   caret-color: white;
 }
 
+.eye{
+  font-size: 30px;
+  color: #ede5db;
+  position: absolute;
+  top: 56%;
+  left:78%;
+}
+
+.regis{
+  top: 62%;
+}
+
 .error {
   font-size: 16px;
   background-color: #da39279b;
