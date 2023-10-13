@@ -71,7 +71,8 @@ function Home() {
   };
 
 const style = {
-  backgroundColor: "transparent"
+  backgroundColor: "transparent",
+  width: "80%"
 }
 
   return (
