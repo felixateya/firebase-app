@@ -14,10 +14,10 @@ function Navbar({user}) {
           <p>{user}</p>
         </div>
         <div className='links'>
-            <a href="/Home" alt="..."><RiDashboardFill/> Dashboard</a>
-            <a href="/Home" alt="..."><CgProfile/> Profile</a>
-            <a href="/Home" alt="..."><SiWebmoney/> Income</a>
-            <a href="/Home" alt="..."><GiExpense/> Expenses</a>
+            <a href="/" alt="..."><RiDashboardFill/> Dashboard</a>
+            <a href="/" alt="..."><CgProfile/> Profile</a>
+            <a href="/" alt="..."><SiWebmoney/> Income</a>
+            <a href="/" alt="..."><GiExpense/> Expenses</a>
         </div>
     </div>
   )

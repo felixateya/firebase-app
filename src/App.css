@@ -80,6 +80,11 @@ h1 {
   animation: shake 0.5s;
 }
 
+.reg{
+top: 69%;
+margin-left: 20px;
+}
+
 .details button {
   width: 80%;
   padding: 15px;

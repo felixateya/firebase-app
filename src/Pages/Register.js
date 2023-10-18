@@ -13,7 +13,7 @@ function Register() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(false);
-  // const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const db = getFirestore(app);
@@ -26,7 +26,7 @@ function Register() {
     const auth = getAuth();
     // setError("");
 
-    if (!email && !password && !name) {
+    if (!email && !password && !name && error) {
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -44,18 +44,17 @@ function Register() {
               navigate("/");
             })
             .catch((err) => {
-              const errorCode = err.code;
-              const errorMessage = err.message;
-              console.log(errorMessage);
-              navigator.vibrate(200)
+              // const errorCode = err.code;
+              // setError(err.message)
+              
               // ..
             });
 
           // ...
         })
         .catch((err) => {
-          // setError(err.message);
-          // setIsLoading(false)
+          setError(err.message);
+          setIsLoading(false)
           // ..
         });
     }
@@ -98,6 +97,16 @@ function Register() {
           placeholder="Set your password *"
           required
         />
+        {error && (
+          <p className="error reg">
+            {error === "Firebase: Error (auth/invalid-login-credentials)." &&
+              "Login failed! Please check your email address and password, and then try again."}
+            {error === "Firebase: Error (auth/network-request-failed)." &&
+              "Network Error. Please check your internet connection."}
+            {error === "Firebase: Error (auth/invalid-email)." &&
+              "Enter a valid Email Address."}
+          </p>
+        )}
         <button onClick={create}>Create Account</button>
         <div>
           <p>Already a User?</p>
