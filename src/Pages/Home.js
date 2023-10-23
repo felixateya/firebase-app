@@ -34,6 +34,7 @@ function Home() {
           const querySnapShot = await getDocs(queryDocument);
           querySnapShot.forEach((userDoc) => {
           const username = userDoc.data().userName
+          document.title = username
           setUser(username)
           });
         };
