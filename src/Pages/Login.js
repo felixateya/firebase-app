@@ -34,7 +34,7 @@ function Login() {
         console.log("successfull");
         // ...
 
-        navigate("/");
+        navigate("/Home");
       })
       .catch((err) => {
         console.log(err.message);

@@ -11,6 +11,7 @@ import {
   query,
 } from "firebase/firestore";
 import { app } from "../Firebase";
+// import Dashboard from './Dashboard'
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState("");
@@ -34,15 +35,17 @@ function Home() {
           const querySnapShot = await getDocs(queryDocument);
           querySnapShot.forEach((userDoc) => {
           const username = userDoc.data().userName
-          document.title = username
+          
           setUser(username)
           });
         };
         FetchUser();
       }else{
         navigate("/Login")
+        // document.title = "Firebase App"
       }
     });
+    
   });
 
 
@@ -59,7 +62,7 @@ function Home() {
       .then(() => {
         // Sign-out successful.
 
-        navigate("/Login");
+        navigate("/");
       })
       .catch((error) => {
         // An error happened.
@@ -78,12 +81,10 @@ const style = {
 
   return (
     <div className="home">
-      <Navbar user={user}/>
+      <Navbar user={user} signOut={signout}/>
       <div className="main">
-        <h1>
-          Welcome <span>{user}</span>
-        </h1>
-        <button onClick={signout}>Log Out</button>
+      <h1>Welcome {user}</h1>
+      {/* <Dashboard/> */}
         {isLoading && <Loader style={style} />}
       </div>
     </div>

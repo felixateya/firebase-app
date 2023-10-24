@@ -3,23 +3,24 @@ import {RiDashboardFill} from 'react-icons/ri'
 import {CgProfile} from 'react-icons/cg'
 import {SiWebmoney, SiDwavesystems} from 'react-icons/si'
 import {GiExpense} from 'react-icons/gi'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
-function Navbar({user}) {
+function Navbar({user, signOut}) {
   return (
     <div className='navbar'>
-        <Link className='logo'><SiDwavesystems/> Fiscall LLC</Link>
+        <Link  to='/Home' className='logo'><SiDwavesystems/> Fiscall LLC</Link>
         <div className="profile">
           {/* <img src="" alt="profilepic"/> */}
           <span className="img"></span>
           <p>{user}</p>
         </div>
         <div className='links'>
-            <Link to="/"><RiDashboardFill/> Dashboard</Link>
-            <Link to="/"><CgProfile/> Profile</Link>
-            <Link to="/"><SiWebmoney/> Income</Link>
-            <Link to="/"><GiExpense/> Expenses</Link>
+            <NavLink to="dashboard"><RiDashboardFill/> Dashboard</NavLink>
+            <NavLink to="profile"><CgProfile/> Profile</NavLink>
+            <NavLink to="/"><SiWebmoney/> Income</NavLink>
+            <NavLink to="/"><GiExpense/> Expenses</NavLink>
         </div>
+        <button className="logout" onClick={signOut}>Log out</button>
     </div>
   )
 }
