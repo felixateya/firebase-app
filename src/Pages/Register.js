@@ -106,7 +106,7 @@ function Register() {
               "Network Error. Please check your internet connection."}
             {error === "Firebase: Error (auth/invalid-email)." &&
               "Enter a valid Email Address."}
-         {error === "Firebase: Error (auth/email-already-in-use)" && "Email already in use. Please use another email address."}
+         {error === "Firebase: Error (auth/email-already-in-use)." && "Email already in use. Please use another email address."}
           </p>
         )}
         <button onClick={create}>Create Account</button>
