@@ -4,6 +4,7 @@ import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { app } from "../Firebase";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import MyToast from "../Components/Toast";
 
 function Login() {
   const emailRef = useRef();
@@ -77,7 +78,7 @@ function Login() {
           ref={passwordRef}
           placeholder="Enter your password  *"
         />
-        {error && (
+        {/* {error && (
           <p className="error">
             {error === "Firebase: Error (auth/invalid-login-credentials)." &&
               "Login failed! Please check your email address and password, and then try again."}
@@ -86,7 +87,7 @@ function Login() {
             {error === "Firebase: Error (auth/invalid-email)." &&
               "Enter a valid Email Address."}
           </p>
-        )}
+        )} */}
         <button onClick={signin}>Log In</button>
         <div>
           <p>Don't have an Account?</p>
@@ -96,6 +97,7 @@ function Login() {
         </div>
       </form>
       {isLoading && <Loader />}
+      {error && <MyToast error = {error} />}
     </div>
   );
 }

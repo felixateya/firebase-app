@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getFirestore } from "firebase/firestore";
 import { app } from "../Firebase";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import MyToast from "../Components/Toast";
 
 function Register() {
   const emailRef = useRef();
@@ -100,13 +101,8 @@ function Register() {
         />
         {error && (
           <p className="error reg">
-            {error === "Firebase: Error (auth/invalid-login-credentials)." &&
-              "Login failed! Please check your email address and password, and then try again."}
             {error === "Firebase: Error (auth/network-request-failed)." &&
               "Network Error. Please check your internet connection."}
-            {error === "Firebase: Error (auth/invalid-email)." &&
-              "Enter a valid Email Address."}
-         {error === "Firebase: Error (auth/email-already-in-use)." && "Email already in use. Please use another email address."}
           </p>
         )}
         <button onClick={create}>Create Account</button>
@@ -118,6 +114,7 @@ function Register() {
         </div>
       </form>
       {isLoading && <Loader />}
+      {error && <MyToast error = {error} />}
     </div>
   );
 }
