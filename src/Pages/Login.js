@@ -34,7 +34,7 @@ function Login() {
         console.log("successfull");
         // ...
 
-        navigate("/Home");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err.message);
@@ -90,7 +90,7 @@ function Login() {
         <button onClick={signin}>Log In</button>
         <div>
           <p>Don't have an Account?</p>
-          <Link to="/Register" alt="Registeration">
+          <Link to="/register" alt="Registeration">
             Sign Up.
           </Link>
         </div>

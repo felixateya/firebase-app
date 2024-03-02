@@ -1,20 +1,36 @@
-import React from 'react'
-import Navbar from '../Components/Navbar'
+import React from "react";
+
 function Dashboard() {
+  const transactions = [
+    { description: "Groceries", amount: -50 },
+    { description: "Salary", amount: 2000 },
+    { description: "Dinner", amount: -30 },
+    { description: "Freelance Work", amount: 500 },
+  ];
+
   return (
-    <div className='dashboard'>
-    {/* <Navbar/> */}
-    <div className='summary'>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div className="dashboard">
+      
+      <div className="overview">
+        <h2>Overview</h2>
+        <p>Account Balance: $5000</p>
+        <p>Net Worth: $20,000</p>
+      </div>
+      <div className="transactions">
+        <h2>Recent Transactions</h2>
+        <p>Transactions  Amount</p>
+        {transactions.map((transaction, index) => (
+          <>
+            <ul key={index}>
+              <li>
+                {transaction.description}: {transaction.amount}
+              </li>
+            </ul>
+          </>
+        ))}
+      </div>
     </div>
-    <div className='summary'>
-        <div></div>
-        <div></div>
-    </div>
-    </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

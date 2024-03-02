@@ -41,7 +41,7 @@ function Register() {
             userEmail: email,
           })
             .then(() => {
-              navigate("/Home");
+              navigate("/home");
             })
             .catch((err) => {
               // const errorCode = err.code;

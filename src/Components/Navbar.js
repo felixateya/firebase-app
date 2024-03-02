@@ -8,17 +8,17 @@ import { NavLink, Link } from 'react-router-dom'
 function Navbar({user, signOut}) {
   return (
     <div className='navbar'>
-        <Link  to='/Home' className='logo'><SiDwavesystems/> Fiscall LLC</Link>
+        <Link  to='/home' className='logo'><SiDwavesystems/> <p>Fiscall LLC</p></Link>
+        
+        <div className='links'>
+            <NavLink to="/home/dashboard"><RiDashboardFill/> Dashboard</NavLink>
+            <NavLink to="/home/profile"><CgProfile/> Profile</NavLink>
+            <NavLink to="/home/income"><SiWebmoney/> Income</NavLink>
+            <NavLink to="/home/expenses"><GiExpense/> Expenses</NavLink>
+        </div>
         <div className="profile">
-          {/* <img src="" alt="profilepic"/> */}
           <span className="img"></span>
           <p>{user}</p>
-        </div>
-        <div className='links'>
-            <NavLink to="dashboard"><RiDashboardFill/> Dashboard</NavLink>
-            <NavLink to="profile"><CgProfile/> Profile</NavLink>
-            <NavLink to="/"><SiWebmoney/> Income</NavLink>
-            <NavLink to="/"><GiExpense/> Expenses</NavLink>
         </div>
         <button className="logout" onClick={signOut}>Log out</button>
     </div>

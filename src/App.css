@@ -53,35 +53,34 @@ h1 {
   font-size: 16px;
   caret-color: white;
   caret-shape: block;
-  
 }
-.page-not-found{
-  display:flex;
+.page-not-found {
+  display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
-  width:100%;
-  height:100vh;
+  width: 100%;
+  height: 100vh;
 }
-.not-found{
-  width:150px;
+.not-found {
+  width: 150px;
   padding: 10px;
   background-color: #cdbaa1;
-  color : #413329;
+  color: #413329;
   border: none;
   border-radius: 12px;
-cursor: pointer;
+  cursor: pointer;
 }
 
-.eye{
+.eye {
   font-size: 30px;
   color: #ede5db;
   position: absolute;
   top: 51%;
-  left:78%;
+  left: 78%;
 }
 
-.regis{
+.regis {
   top: 58%;
 }
 
@@ -99,9 +98,9 @@ cursor: pointer;
   animation: shake 0.5s;
 }
 
-.reg{
-top: 69%;
-margin-left: 20px;
+.reg {
+  top: 69%;
+  margin-left: 20px;
 }
 
 .details button {
@@ -171,15 +170,15 @@ margin-left: 20px;
 }
 
 .navbar {
-  width: 16%;
-  /* overflow: hidden; */
+  width: 15%;
   height: 100%;
   background-color: #ecd592;
   display: flex;
+  /* justify-content: space-evenly; */
   flex-direction: column;
   backdrop-filter: blur(5px);
   padding-left: 20px;
-  box-shadow: 1px 1px 6px 6px #413029, -1px -1px 6px 6px #413029;
+  box-shadow: 1px 1px 2px 2px #413029, -1px -1px 2px 2px #413029;
 }
 
 .logo {
@@ -200,16 +199,16 @@ margin-left: 20px;
 .profile {
   display: flex;
   align-items: center;
-  margin-top: 10vh;
+  justify-content: center;
 }
 
 .img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: url(./assets/authBg.jpg);
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
   border: 5px solid #413029;
 }
@@ -222,10 +221,11 @@ margin-left: 20px;
 }
 
 .links {
-  margin-top: 10vh;
+  margin-left: 10%;
   display: flex;
-  flex-direction: column;
 
+  flex-direction: column;
+  gap: 10px;
   justify-content: space-between;
 }
 
@@ -244,16 +244,17 @@ margin-left: 20px;
 .links a:hover {
   color: #963810;
 }
-.links .active{
+.links .active {
   color: #cdbaa1;
 }
-.links .active:hover{
+.links .active:hover {
   color: #ecd592;
 }
 .home {
   width: 100%;
   height: 100vh;
   display: flex;
+  /* flex-direction: column; */
   background: url(https://source.unsplash.com/1366x768/?night);
   /* background: #413029; */
   background-size: cover;
@@ -277,65 +278,73 @@ margin-left: 20px;
   align-items: center;
   width: 86%;
   height: 100%;
-  
 }
 
 .logout {
   width: 150px;
-  padding: 15px;
-  border: 2px solid #ecd592;
+  padding: 10px;
+  /* border: 2px solid #ecd592; */
   color: #413029;
   margin-left: 20px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   border-radius: 12px;
   border: none;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  background-color: transparent;
   transition: 0.2s ease-in-out;
 }
 .logout:hover {
   background-color: #cdbaa1;
 }
 
-.active{
+.active {
   background-color: #963810;
   width: max-content;
   color: #cdbaa1;
   border-radius: 12px;
   padding: 0 4px;
 }
-.dashboard{
-width: 100%;
-height: 100vh;
-display: flex;
-flex-direction: column;
-background-image: linear-gradient(115deg, rgba(17, 74, 74, 0.49), rgba(8, 22, 22, 0.472)), url(./assets/homeBg.jpg);
-background-size: cover;
-background-repeat: no-repeat;
+.dashboard {
+  width: 85%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
 }
 
-.summary{
-  width: 95%;
-  height: 40%;
-  display:flex;
-  margin-top: 20px;
-  gap: 20px;
-  border: 5px solid #ecd592;
-  margin-left:2%;
-  padding-left: 20px;
-  border-radius: 20px;
+.overview,
+.transactions {
+  margin-bottom: 20px;
 }
 
-.summary div{
-  width:300px;
-  height:90%;
-  background-color: #413529;
-  border-radius: 12px;
-  margin-top:10px;
+.transactions ul {
+  padding: 0;
 }
 
+.transactions li {
+  list-style: none;
+  margin-bottom: 10px;
+}
 
+.overview,
+.transactions h2 {
+  color: #ecd592;
+}
+
+.profile-page {
+  width: 85%;
+  height: 100vh;
+}
+.income {
+  width: 85%;
+  height: 100vh;
+}
+.expenses {
+  width: 85%;
+  height: 100vh;
+}
 
 /* LOADER START */
 .loader {

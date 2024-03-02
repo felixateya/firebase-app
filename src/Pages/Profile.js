@@ -1,7 +1,10 @@
-function Profile(){
-    return (
-        <div>Profile</div>
-    )
+
+function Profile() {
+  return (
+    <div className="profile-page">
+      
+    </div>
+  );
 }
 
-export default Profile
+export default Profile;
