@@ -12,9 +12,9 @@ function Navbar({user, signOut}) {
         
         <div className='links'>
             <NavLink to="/home/dashboard"><RiDashboardFill/> Dashboard</NavLink>
-            <NavLink to="/home/profile"><CgProfile/> Profile</NavLink>
             <NavLink to="/home/income"><SiWebmoney/> Income</NavLink>
             <NavLink to="/home/expenses"><GiExpense/> Expenses</NavLink>
+            <NavLink to="/home/profile"><CgProfile/> Profile</NavLink>
         </div>
         <div className="profile">
           <span className="img"></span>

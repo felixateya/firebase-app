@@ -39,7 +39,7 @@ function handleClose () {
             const querySnapShot = await getDocs(queryDocument);
             querySnapShot.forEach((userDoc) => {
             const username = userDoc.data().userName;
-            document.title = username;
+            document.title = `Fiscall LLC | ${username}`;
             setUser(username);
           });
         };
