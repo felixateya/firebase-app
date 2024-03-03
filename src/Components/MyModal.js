@@ -6,15 +6,14 @@ function MyModal({ show, signout, handleClose }) {
       <Modal
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        data-bs-theme = "dark"
         show={show}
         onHide={handleClose}
       >
-        <Modal.Header>
+        <Modal.Header className="bg-dark text-white">
           <Modal.Title id="contained-modal-title-vcenter">Log Out</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to log out?</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className="bg-dark text-white">Are you sure you want to log out?</Modal.Body>
+        <Modal.Footer className="bg-dark text-white">
           <Button variant="danger" onClick={handleClose}>
             No
           </Button>

@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
-import { app } from "../Firebase";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import MyToast from "../Components/Toast";
 
@@ -15,24 +14,28 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const signin = () => {
+  
+
+  // console.log(error);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     setError("");
 
     const auth = getAuth();
-    if (!email && !password && error) {
+    if (!email === undefined && password === undefined && error) {
       setIsLoading(false);
-      // console.log(error);
     } else {
       setIsLoading(true);
+
     }
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("successfull");
+        console.log(user + " successfull");
         // ...
 
         navigate("/home");
@@ -42,16 +45,6 @@ function Login() {
         setError(err.message);
         setIsLoading(false);
       });
-
-    // setIsLoading(true)
-    // setTimeout( ()=>{
-    //   navigate("/Home");
-    // }, 3000)
-  };
-
-  // console.log(error);
-  const handleSubmit = (e) => {
-    e.preventDefault();
   };
 
   return (
@@ -63,6 +56,7 @@ function Login() {
         <input
           type="email"
           autoComplete="true"
+          name="email"
           required
           ref={emailRef}
           placeholder="Enter your email address  *"
@@ -78,21 +72,11 @@ function Login() {
           ref={passwordRef}
           placeholder="Enter your password  *"
         />
-        {/* {error && (
-          <p className="error">
-            {error === "Firebase: Error (auth/invalid-login-credentials)." &&
-              "Login failed! Please check your email address and password, and then try again."}
-            {error === "Firebase: Error (auth/network-request-failed)." &&
-              "Network Error. Please check your internet connection."}
-            {error === "Firebase: Error (auth/invalid-email)." &&
-              "Enter a valid Email Address."}
-          </p>
-        )} */}
-        <button onClick={signin}>Log In</button>
+        <button>Log In</button>
         <div>
           <p>Don't have an Account?</p>
           <Link to="/register" alt="Registeration">
-            Sign Up.
+            Create account
           </Link>
         </div>
       </form>

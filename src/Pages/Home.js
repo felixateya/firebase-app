@@ -45,7 +45,7 @@ function handleClose () {
         };
         FetchUser();
       } else {
-        navigate("/Login");
+        navigate("/");
         // document.title = "Firebase App"
       }
     });

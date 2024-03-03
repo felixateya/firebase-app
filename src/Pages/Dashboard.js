@@ -10,7 +10,6 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      
       <div className="overview">
         <h2>Overview</h2>
         <p>Account Balance: $5000</p>
@@ -18,7 +17,7 @@ function Dashboard() {
       </div>
       <div className="transactions">
         <h2>Recent Transactions</h2>
-        <p>Transactions  Amount</p>
+        <p>Transactions Amount</p>
         {transactions.map((transaction, index) => (
           <>
             <ul key={index}>

@@ -19,7 +19,10 @@ function Register() {
   const navigate = useNavigate();
   const db = getFirestore(app);
 
-  const create = () => {
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const name = nameRef.current.value;
@@ -61,16 +64,7 @@ function Register() {
         });
     }
 
-    // setIsLoading(true)
-    //   setTimeout( ()=>{
-    //     navigate("/Home");
-    //   }, 3000)
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  // console.log(error);
   return (
     <div className="register">
       <form className="details" onSubmit={handleSubmit}>
@@ -79,12 +73,14 @@ function Register() {
         <h2>Create Account</h2>
         <input
           type="text"
+          autoComplete="true"
           ref={nameRef}
           placeholder="Enter your full name *"
           required
         />
         <input
           type="email"
+          autoComplete="true"
           ref={emailRef}
           placeholder="Enter your email address *"
           required
@@ -98,14 +94,9 @@ function Register() {
           ref={passwordRef}
           placeholder="Set your password *"
           required
+          autoComplete="true"
         />
-        {error && (
-          <p className="error reg">
-            {error === "Firebase: Error (auth/network-request-failed)." &&
-              "Network Error. Please check your internet connection."}
-          </p>
-        )}
-        <button onClick={create}>Create Account</button>
+        <button>Create Account</button>
         <div>
           <p>Already a User?</p>
           <Link to="/" alt="Registeration">

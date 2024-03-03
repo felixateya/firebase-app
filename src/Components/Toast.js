@@ -32,8 +32,6 @@ function MyToast({ error }) {
             "Network Error. Please check your internet connection."}
           {error === "Firebase: Error (auth/invalid-email)." &&
             "Enter a valid Email Address."}
-          {error === "Firebase: Error (auth/network-request-failed)." &&
-            "Network Error. Please check your internet connection."}
           {error === "Firebase: Error (auth/invalid-email)." &&
             "Enter a valid Email Address."}
           {error === "Firebase: Error (auth/email-already-in-use)." &&

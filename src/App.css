@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .register,
@@ -11,24 +12,26 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  background: url(https://source.unsplash.com/1366x768/?finance);
+  background: linear-gradient(to left, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(https://source.unsplash.com/1366x768/?finance);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .details {
-  width: 400px;
+  width: 375px;
   height: max-content;
   min-height: 350px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(46, 16, 5);
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(46, 16, 5, 0.3);
   padding: 40px 10px 10px 10px;
-  backdrop-filter: blur(2px);
-  box-shadow: inset 12px 12px 12px rgba(29, 27, 27, 0.363),
-    inset -12px -12px 12px rgba(46, 16, 5, 0.389);
+  backdrop-filter: blur(5px);
+  box-shadow: inset 6px 6px 6px #ecd592,
+    inset -6px -6px 6px #cdbaa1;
   transition: 0.3s ease-in-out;
 }
 
@@ -39,17 +42,17 @@ h1 {
 }
 
 .details input {
-  width: 70%;
-  padding: 15px;
+  width: 80%;
+  padding: 10px;
   border-radius: 5px;
   outline: none;
   margin-top: 20px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
   background-color: transparent;
-  border-top: transparent;
-  border-right: transparent;
   border-left: transparent;
-  border-bottom: 3px solid #d7cabb;
+  border-right: transparent;
+  border-top: 2px solid #d7cabb;
+  border-bottom: 2px solid #d7cabb;
   color: #d7cabb;
   font-size: 16px;
   caret-color: white;
@@ -62,6 +65,14 @@ h1 {
   flex-direction: column;
   width: 100%;
   height: 100vh;
+  background: linear-gradient(to left, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(https://source.unsplash.com/1366x768/?error);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-not-found h1{
+  color: orangered;
 }
 .not-found {
   width: 150px;
@@ -77,73 +88,68 @@ h1 {
   font-size: 30px;
   color: #ede5db;
   position: absolute;
-  top: 51%;
+  top: 62%;
   left: 78%;
+  cursor: pointer;
 }
 
 .regis {
-  top: 58%;
+  top: 68%;
 }
 
-.error {
-  font-size: 16px;
-  background-color: #da39279b;
-  color: #d7cabb;
-  padding: 5px 10px;
-  /* margin-top: 20px; */
-  font-weight: 600;
-  margin-left: 40px;
-  border-radius: 12px;
-  position: absolute;
-  top: 63%;
-  animation: shake 0.5s;
-}
+
 
 .reg {
-  top: 69%;
+  /* top: 69%; */
   margin-left: 20px;
 }
 
 .details button {
-  width: 80%;
-  padding: 15px;
+  width: 75%;
+  padding: 10px 2px;
   background-color: #ecd592;
   color: #413029;
-  margin-left: 40px;
-  margin-top: 80px;
+  /* margin-left: 40px; */
+  margin-top: 10px;
+  border: 4px solid #ecd592;
   border-radius: 12px;
-  border: none;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
+
 .details button:hover {
   color: #ecd592;
-  background-color: #413029;
+  background-color: transparent;
+  border: 4px solid #413029;
+}
+
+.details button:disabled{
+  cursor: not-allowed;
 }
 
 .details div {
-  width: 80%;
+  width: 90%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #d7cabb;
+  justify-content: center;
+  color: #ecd592;
   font-size: 16px;
-  margin-left: 40px;
-  padding: 15px 10px;
+  /* margin-left: 40px; */
+  padding: 5px 10px;
 }
 
 .details div a {
-  text-decoration: none;
-  color: #d7cabb;
+  /* text-decoration: none; */
+  color: #ecd592;
   font-size: 16px;
   transition: 0.2s ease-in-out;
+  margin-left: 15px;
 }
 
 .details div a:hover {
-  color: #ecd592;
+  color: #f7f7f7;
 }
 
 @keyframes shake {
@@ -199,6 +205,7 @@ h1 {
 
 .profile {
   display: flex;
+  height: 60px;
   align-items: center;
   justify-content: center;
 }
@@ -211,11 +218,11 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 5px solid #413029;
+  /* border: 5px solid #413029; */
 }
 
 .profile p {
-  font-size: 22px;
+  font-size: 20px;
   color: #413029;
   font-weight: 600;
   margin-left: 20px;
@@ -239,24 +246,29 @@ h1 {
   color: #413029;
   margin-top: 15px;
   font-weight: 800;
+  
   transition: 0.2s ease-in-out;
+  border-bottom: 2px solid #ecd592;
+  border-radius: 12px;
 }
 
 .links a:hover {
   color: #963810;
 }
+
 .links .active {
-  color: #371203;
+  border-bottom: 2px solid #963810;
+  color: #963810;
+  border-radius: 12px;
+  /* padding: 0 4px; */
 }
-.links .active:hover {
-  color: #292518;
-}
+
 .home {
   width: 100%;
   height: 100vh;
   display: flex;
   /* flex-direction: column; */
-  background: url(https://source.unsplash.com/1366x768/?finance);
+  background: linear-gradient(to left, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(https://source.unsplash.com/1366x768/?finance);
   /* background: #413029; */
   background-size: cover;
   background-repeat: no-repeat;
@@ -300,13 +312,7 @@ h1 {
   background-color: #cdbaa1;
 }
 
-.active {
-  border-bottom: 2px solid #963810;
-  width: max-content;
-  color: #cdbaa1;
-  border-radius: 12px;
-  padding: 0 4px;
-}
+
 .dashboard {
   width: 85%;
   height: 100vh;
@@ -356,7 +362,7 @@ h1 {
   height: 100%;
   position: absolute;
   z-index: 100;
-  background-color: #413029;
+  background-color: #41302956;
 }
 
 .bar {

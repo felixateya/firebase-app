@@ -17,7 +17,7 @@ function Navbar({user, signOut}) {
             <NavLink to="/home/profile"><CgProfile/> Profile</NavLink>
         </div>
         <div className="profile">
-          <span className="img"></span>
+          <h5 className="img"> </h5>
           <p>{user}</p>
         </div>
         <button className="logout" onClick={signOut}>Log out</button>
