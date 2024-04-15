@@ -8,6 +8,7 @@ import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import MyToast from "../Components/Toast";
+import {app} from '../Firebase'
 import PassReset from "../Components/PassReset";
 
 function Login() {
@@ -21,7 +22,7 @@ function Login() {
   const navigate = useNavigate();
 
   // console.log(error);
-  const auth = getAuth();
+  const auth = getAuth(app);
   const handleSubmit = (e) => {
     e.preventDefault();
     const password = passwordRef.current.value;
@@ -41,12 +42,12 @@ function Login() {
         console.log(user + " successfull");
         // ...
 
-        navigate("/home");
+        navigate("/");
       })
       .catch((err) => {
+        setIsLoading(false);
         console.log(err.message);
         setError(err.message);
-        setIsLoading(false);
       });
   };
 
@@ -98,7 +99,7 @@ function Login() {
         <button>Log In</button>
         <div>
           <p>Don't have an Account?</p>
-          <Link to="/register" alt="Registeration">
+          <Link to="/register" alt="Registration">
             Create account
           </Link>
         </div>

@@ -35,8 +35,8 @@ function MyToast({ error }) {
           {error === "Firebase: Error (auth/invalid-email)." &&
             "Enter a valid Email Address."}
           {error === "Firebase: Error (auth/email-already-in-use)." &&
-            "Email already in use. Please use another email address."}
-          {error ? error : ''}
+            "Email already in use. Please use another email address."} 
+          {/* {error ? error: ""} */}
         </Toast.Body>
       </Toast>
     </div>

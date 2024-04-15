@@ -26,9 +26,12 @@ function handleClose () {
 }
   const auth = getAuth();
   const db = getFirestore(app);
+  
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user === null) {
+        navigate("/login");
+      } else {
         // const UserId = user.uid;
         
         const FetchUser = async () => {
@@ -44,9 +47,6 @@ function handleClose () {
           });
         };
         FetchUser();
-      } else {
-        navigate("/");
-        // document.title = "Firebase App"
       }
     });
   }, [auth, db, navigate]);
@@ -63,7 +63,7 @@ handleClose()
           // Sign-out successful.
           document.title = "Firebase App";
         setShow(false)
-          navigate("/");
+          navigate("/login");
         })
         .catch((error) => {
           // An error happened.

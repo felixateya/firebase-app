@@ -23,8 +23,8 @@ function PassReset  ({ reset, modalShow, onHide }) {
           </p>
         </Modal.Body>
         <Modal.Footer className=" bg-gradient border border-0 text-dark bg-info-subtle">
-          <Button onClick={onHide}>Close</Button>
-          <Button onClick={reset}>reset</Button>
+          <Button variant="primary" onClick={onHide}>Close</Button>
+          <Button variant="success" onClick={reset}>reset</Button>
         </Modal.Footer>
       </Modal>
     </div>

@@ -45,7 +45,7 @@ function Register() {
             userEmail: email,
           })
             .then(() => {
-              navigate("/home");
+              navigate("/");
             })
             .catch((err) => {
               // const errorCode = err.code;
@@ -99,7 +99,7 @@ function Register() {
         <button>Create Account</button>
         <div>
           <p>Already a User?</p>
-          <Link to="/" alt="Registeration">
+          <Link to="/login" alt="Registeration">
             Sign In.
           </Link>
         </div>
