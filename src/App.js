@@ -12,7 +12,7 @@ const Profile = lazy(() => import("./Pages/Profile"));
 const Income = lazy(() => import("./Pages/Income"));
 const Expenses = lazy(() => import("./Pages/Expenses"));
 const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
-const Welcome = lazy(() => import("./Pages/Welcome"));
+// const Welcome = lazy(() => import("./Pages/Welcome"));
 
 const style = {
   backgroundColor: "#ecd592",
@@ -26,8 +26,8 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="/" element={<Home />}>
-            <Route index element={<Welcome />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            {/* <Route index element={<Welcome />} /> */}
+            <Route index element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
             <Route path="income" element={<Income />} />
             <Route path="expenses" element={<Expenses />} />

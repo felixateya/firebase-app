@@ -12,6 +12,7 @@ import {
   query,
 } from "firebase/firestore";
 import { app } from "../Firebase";
+import Header from "../Components/Header";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,10 +86,13 @@ handleClose()
 
   return (
     <div className="home">
-      <Navbar user={user}  signOut={handleShow} />
+      <Navbar   signOut={handleShow} />
+      <main>
+      <Header user={user}/>
       <Outlet user={user}/>
         {isLoading && <Loader style={style} />}
       <MyModal show={show} signout={signout} handleClose={handleClose} handleShow={handleShow}/>
+      </main>
     </div>
   );
 }

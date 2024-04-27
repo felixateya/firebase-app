@@ -1,28 +1,54 @@
-import React from 'react'
-import {RiDashboardFill} from 'react-icons/ri'
-import {CgProfile} from 'react-icons/cg'
-import {SiWebmoney, SiDwavesystems} from 'react-icons/si'
-import {GiExpense} from 'react-icons/gi'
-import { NavLink, Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { RiDashboardFill } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
+import { SiWebmoney, SiDwavesystems } from "react-icons/si";
+import { GiExpense } from "react-icons/gi";
+import {
+  HiArrowRightOnRectangle,
+  HiArrowLeftCircle,
+  HiArrowRightCircle,
+} from "react-icons/hi2";
+import { NavLink, Link } from "react-router-dom";
 
-function Navbar({user, signOut}) {
+function Navbar({ signOut }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleIsOpen = () => setIsOpen((is) => !is);
   return (
-    <div className='navbar'>
-        <Link  to='/' className='logo'><SiDwavesystems/> <p>Fiscall LLC</p></Link>
-        
-        <div className='links'>
-            <NavLink to="/dashboard"><RiDashboardFill/> Dashboard</NavLink>
-            <NavLink to="/income"><SiWebmoney/> Income</NavLink>
-            <NavLink to="/expenses"><GiExpense/> Expenses</NavLink>
-            <NavLink to="/profile"><CgProfile/> Profile</NavLink>
-        </div>
-        <div className="profile">
-          <h5 className="img"> </h5>
-          <p>{user}</p>
-        </div>
-        <button className="logout" onClick={signOut}>Log out</button>
+    <div className="navbar">
+      {!isOpen ? (
+        <HiArrowRightCircle onClick={handleIsOpen} className="extend" />
+      ) : (
+        <HiArrowLeftCircle onClick={handleIsOpen} className="extend" />
+      )}
+      <Link to="/" className="logo">
+        <SiDwavesystems />{" "}
+        <h5 className={`${isOpen ? "flex" : "link"}`}>Fiscall LLC</h5>
+      </Link>
+
+      <div className="links">
+        <NavLink to="/">
+          <RiDashboardFill />
+          <h5 className={`${isOpen ? "flex" : "link"}`}>Dashboard</h5>
+        </NavLink>
+        <NavLink to="/income">
+          <SiWebmoney />
+          <h5 className={`${isOpen ? "flex" : "link"}`}>Income</h5>
+        </NavLink>
+        <NavLink to="/expenses">
+          <GiExpense />
+          <h5 className={`${isOpen ? "flex" : "link"}`}>Expenses</h5>
+        </NavLink>
+        <NavLink to="/profile">
+          <CgProfile />
+          <h5 className={`${isOpen ? "flex" : "link"}`}>Profile</h5>
+        </NavLink>
+      </div>
+      
+      <button className="logout" onClick={signOut}>
+        <HiArrowRightOnRectangle /> <h5 className="link">Log out</h5>
+      </button>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

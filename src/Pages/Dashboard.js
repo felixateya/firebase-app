@@ -1,32 +1,51 @@
 import React from "react";
-
+import { FaDollarSign, FaBookmark, FaChartLine, FaUser } from "react-icons/fa";
 function Dashboard() {
-  const transactions = [
-    { description: "Groceries", amount: -50 },
-    { description: "Salary", amount: 2000 },
-    { description: "Dinner", amount: -30 },
-    { description: "Freelance Work", amount: 500 },
-  ];
-
   return (
     <div className="dashboard">
       <div className="overview">
-        <h2>Overview</h2>
-        <p>Account Balance: $5000</p>
-        <p>Net Worth: $20,000</p>
+        <div className="ov-one">
+          <div>
+            <p>Revenue</p>
+            <h1>$34k</h1>
+          </div>
+          <p className="dash-icon">
+            <FaDollarSign />
+          </p>
+        </div>
+        <div className="ov-one">
+          <div>
+            <p>Orders</p>
+            <h1>811</h1>
+          </div>
+          <p className="dash-icon">
+            <FaBookmark />
+          </p>
+        </div>
+        <div className="ov-one">
+          <div>
+            <p>Profit</p>
+            <h1>$2.3k</h1>
+          </div>
+            
+          <p className="dash-icon">
+            <FaChartLine />
+          </p>
+        </div>
+        <div className="ov-one">
+          <div>
+            <p>Users</p>
+            <h1>762</h1>
+          </div>
+            <p className="dash-icon">
+            <FaUser />
+          </p>
+        </div>
       </div>
       <div className="transactions">
-        <h2>Recent Transactions</h2>
-        <p>Transactions Amount</p>
-        {transactions.map((transaction, index) => (
-          <>
-            <ul key={index}>
-              <li>
-                {transaction.description}: {transaction.amount}
-              </li>
-            </ul>
-          </>
-        ))}
+        <div className="earnings"></div>
+        <div className="sales"></div>
+        <div className="users"></div>
       </div>
     </div>
   );
