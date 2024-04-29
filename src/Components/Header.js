@@ -1,5 +1,5 @@
 import { useResolvedPath } from "react-router";
-import { FaSearch, FaRegBell, FaCog } from "react-icons/fa";
+import { FaRegBell, FaCog } from "react-icons/fa";
 
 function Header({ user }) {
   const params = useResolvedPath();
@@ -7,18 +7,18 @@ function Header({ user }) {
   return (
     <header className="header">
       <h4>
-        Home<span>{params.pathname  === '/' ? '/ dashboard' : params.pathname}</span>
+        Fiscall | <span>{params.pathname  === '/' ? 'dashboard' : params.pathname.replace("/", "")}</span>
       </h4>
       <div className="all">
-        <div className="search">
+        {/* <div className="search">
           <input type="search" placeholder="Search..." name="serach" />
           <FaSearch />
-        </div>
+        </div> */}
         <FaCog/>
         <FaRegBell />
         <div className="profile">
           <h5 className="img"> </h5>
-          {/* <p>{user}</p> */}
+          <p>{user || "test user"}</p>
         </div>
       </div>
     </header>

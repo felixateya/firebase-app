@@ -67,22 +67,31 @@ h1 {
   width: 100%;
   height: 100vh;
   background: linear-gradient(to left, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(https://source.unsplash.com/1366x768/?error);
+  background: #000222;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .page-not-found h1{
-  color: orangered;
+  color: red;
 }
 .not-found {
   width: 150px;
   padding: 10px;
-  background-color: #cdbaa1;
-  color: #413329;
+  background-color: orangered;
+  color: #f2f5f5;
+  font-weight: 700;
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  font-size: 22px;
+  transition: 0.3s ease-in-out;
+}
+
+.not-found:hover{
+  background-color: #f2f5f5;
+  color: orangered;
 }
 
 .eye {
@@ -192,7 +201,7 @@ h1 {
   width: max-content;
   position: relative;
   height: 100%;
-  background-color: #000;
+  background-color: #000222;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(5px);
@@ -215,17 +224,27 @@ h1 {
 }
 
 .extend{
-  color: #000;
+  color: #f2f5f5;
   font-weight: 800;
-  font-size: 34px;
+  font-size: 30px;
+  padding: 4px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000222;
+  border-radius: 50%;
   gap: 10px;
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s ease-in-out;
   position: absolute;
-  left: 100%;
+  left: 104%;
   top: 50%;
+  transition: 0.3s ease-in-out;
+}
+
+.extend:hover{
+  background-color: #37b9f1;
 }
 .link{
   display: none;
@@ -245,7 +264,7 @@ h1 {
 
 .profile {
   display: flex;
-  height: 60px;
+  /* height: 60px; */
   align-items: center;
   justify-content: center;
 }
@@ -258,19 +277,19 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 2px solid #000;
+  border: 2px solid #000222;
 }
 
 .profile p {
   font-size: 20px;
-  color: #413029;
+  color: #000222;
   font-weight: 600;
   margin-left: 20px;
 }
 
 .links {
   display: flex;
-  margin-right: 4px;
+  padding: 0 10px;
   flex-direction: column;
   gap: 10px;
   justify-content: space-between;
@@ -316,14 +335,14 @@ h1 {
 
 }
 .header h4 span{
-  color: #000;
+  color: #000222;
 }
 .all {
   display: flex;
-  font-size: 20px;
+  font-size: 24px;
   align-items: center;
   justify-content: center;
-  gap: 70px;
+  gap: 40px;
   padding: 4px;
 }
 .search{
@@ -343,7 +362,7 @@ h1 {
 }
 
 .search input::placeholder{
-  color:#000;
+  color:#000222;
   font-weight: 500;
 }
 
@@ -379,10 +398,14 @@ h1 {
 
 .logout {
   width: max-content;
-  padding: 10px;
+  padding: 5px;
   color: #f2f5f5;
   border-radius: 12px;
   border: none;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 6px;
   font-size: 26px;
   font-weight: 600;
   cursor: pointer;
@@ -391,6 +414,7 @@ h1 {
   margin-right: 4px;
 }
 .logout:hover {
+  background-color: #f2f5f5;
   color: #37b9f1;
 }
 
@@ -417,11 +441,15 @@ h1 {
   justify-content: space-evenly;
   align-items: center;
   padding: 2px;
-  background-color: #8739f9;
+  background-color: #000222;
   width: 190px;
   color: #f2f5f5;
   height: 110px;
   border-radius: 12px;
+  transition: 0.3s ease-in-out;
+}
+.ov-one:hover{
+  color: #37b9f1;
 }
 
 .ov-one > div{
@@ -433,9 +461,7 @@ h1 {
   line-height: 2px;
 }
 
-.ov-one > div p{
-  color: #f2f2f2;
-}
+
 .ov-one > div h1{
   font-weight: 600;
 }
@@ -447,7 +473,7 @@ h1 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.395);
+  background-color: rgba(164, 163, 163, 0.395);
 }
 
 .overview,
@@ -465,7 +491,7 @@ h1 {
 .earnings{
   width: 25%;
   height: 100%;
-  background-color: #fff;
+  background-color: #f7f7f7;
   box-shadow: 2px 2px 2px 2px #d2d2d2;
   border-radius: 12px;
   margin-left: 30px;
@@ -474,7 +500,7 @@ h1 {
 .sales{
   width: 45%;
   height: 100%;
-  background-color: #fff;
+  background-color: #f7f7f7;
   box-shadow: 2px 2px 2px 2px #d2d2d2;
   border-radius: 12px;
 }
@@ -482,7 +508,7 @@ h1 {
 .users{
   width: 25%;
   height: 100%;
-  background-color: #fff;
+  background-color: #f7f7f7;
   box-shadow: 2px 2px 2px 2px #d2d2d2;
   border-radius: 12px;
 }
@@ -518,7 +544,7 @@ h1 {
   display: inline-block;
   width: 4px;
   height: 30px;
-  background-color: #cdbaa1;
+  background-color: #f2f5f5;
   border-radius: 10px;
   animation: scale-up4 1s linear infinite;
 }
@@ -535,7 +561,7 @@ h1 {
 
 @keyframes scale-up4 {
   20% {
-    background-color: #413029;
+    background-color: #070d64;
     transform: scaleY(1.5);
   }
 

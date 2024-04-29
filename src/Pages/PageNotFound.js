@@ -6,7 +6,7 @@ export default function PageNotFound() {
     return (
       <div className="page-not-found">
         <h1>Error 404 !!! Page not found</h1>
-        <button className="not-found" onClick={()=>navigate(-1)}>Back</button>
+        <button className="not-found" onClick={()=>navigate(-1)}>Go Back</button>
       </div>
     );
   }

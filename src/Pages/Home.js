@@ -62,7 +62,7 @@ handleClose()
       signOut(auth)
         .then(() => {
           // Sign-out successful.
-          document.title = "Firebase App";
+          document.title = "Fiscall LLC";
         setShow(false)
           navigate("/login");
         })
@@ -78,7 +78,7 @@ handleClose()
 
   const style = {
     backgroundColor: "transparent",
-    width: "100%",
+    width: "85%",
   };
 
   

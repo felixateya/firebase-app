@@ -5,8 +5,8 @@ import { SiWebmoney, SiDwavesystems } from "react-icons/si";
 import { GiExpense } from "react-icons/gi";
 import {
   HiArrowRightOnRectangle,
-  HiArrowLeftCircle,
-  HiArrowRightCircle,
+  HiChevronRight,
+  HiChevronLeft
 } from "react-icons/hi2";
 import { NavLink, Link } from "react-router-dom";
 
@@ -16,9 +16,9 @@ function Navbar({ signOut }) {
   return (
     <div className="navbar">
       {!isOpen ? (
-        <HiArrowRightCircle onClick={handleIsOpen} className="extend" />
+        <HiChevronRight onClick={handleIsOpen} className="extend" />
       ) : (
-        <HiArrowLeftCircle onClick={handleIsOpen} className="extend" />
+        <HiChevronLeft onClick={handleIsOpen} className="extend" />
       )}
       <Link to="/" className="logo">
         <SiDwavesystems />{" "}
@@ -45,7 +45,7 @@ function Navbar({ signOut }) {
       </div>
       
       <button className="logout" onClick={signOut}>
-        <HiArrowRightOnRectangle /> <h5 className="link">Log out</h5>
+        <HiArrowRightOnRectangle /> <h5 className={`${isOpen ? "flex" : "link"}`}>Log out</h5>
       </button>
     </div>
   );
