@@ -14,7 +14,7 @@ function Navbar({ signOut }) {
   const [isOpen, setIsOpen] = useState(false);
   const handleIsOpen = () => setIsOpen((is) => !is);
   return (
-    <div className="navbar">
+    <div className={`navbar ${isOpen ? "open" : ""}`}>
       {!isOpen ? (
         <HiChevronRight onClick={handleIsOpen} className="extend" />
       ) : (
