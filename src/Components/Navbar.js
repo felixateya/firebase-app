@@ -9,7 +9,6 @@ import {
   HiChevronLeft
 } from "react-icons/hi2";
 import { NavLink, Link } from "react-router-dom";
-
 function Navbar({ signOut }) {
   const [isOpen, setIsOpen] = useState(false);
   const handleIsOpen = () => setIsOpen((is) => !is);
