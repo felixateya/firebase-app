@@ -380,6 +380,7 @@ h1 {
   height: 100vh;
   display: flex;
   background: #000222;
+  background: url(https://source.unsplash.com/1366x768?nightlight);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -502,6 +503,7 @@ h1 {
   width: 25%;
   height: 100%;
   background-color: #000222;
+  background-color: transparent;
   border: 1px solid #f2f5f5;
   border-radius: 12px;
   margin-left: 30px;
@@ -511,6 +513,7 @@ h1 {
   width: 45%;
   height: 100%;
   background-color: #000222;
+  background-color: transparent;
   border: 1px solid #f2f5f5;
   border-radius: 12px;
 }
@@ -519,6 +522,7 @@ h1 {
   width: 25%;
   height: 100%;
   background-color: #000222;
+  background-color: transparent;
   border: 1px solid #f2f5f5;
   border-radius: 12px;
 }
