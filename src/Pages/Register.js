@@ -67,7 +67,7 @@ function Register() {
   };
   return (
     <div className="register">
-      <form className="details" onSubmit={handleSubmit}>
+      <form className="register-form" onSubmit={handleSubmit}>
         <h1>Fiscall LLC</h1>
         <br/>
         <h2>Create Account</h2>
@@ -85,7 +85,7 @@ function Register() {
           placeholder="Enter your email address *"
           required
         />
-        { visible ? <AiFillEyeInvisible onClick={()=> setVisible(false)} className="eye regis" />  : <AiFillEye onClick={()=> setVisible(true)} className="eye regis" />
+        { visible ? <AiFillEyeInvisible onClick={()=> setVisible(false)} className="eye-login regis" />  : <AiFillEye onClick={()=> setVisible(true)} className="eye-login regis" />
             
           
           }

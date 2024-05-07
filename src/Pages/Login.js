@@ -69,7 +69,7 @@ function Login() {
 
   return (
     <div className="login">
-      <form className="details" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <h1>Fiscall LLC</h1>
         <br />
         <h2>Login Page</h2>
@@ -84,10 +84,10 @@ function Login() {
         {visible ? (
           <AiFillEyeInvisible
             onClick={() => setVisible(false)}
-            className="eye"
+            className="eye-login"
           />
         ) : (
-          <AiFillEye onClick={() => setVisible(true)} className="eye" />
+          <AiFillEye onClick={() => setVisible(true)} className="eye-login" />
         )}
         <input
           type={visible ? "text" : "password"}

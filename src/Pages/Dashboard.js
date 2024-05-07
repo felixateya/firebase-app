@@ -16,78 +16,74 @@ import {
   YAxis,
 } from "recharts";
 function Dashboard() {
-  const EarningsData = [
-    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-    { name: "Page B", uv: 300, pv: 1800, amt: 1800 },
-    { name: "Page C", uv: 300, pv: 1800, amt: 1800 },
-    { name: "Page D", uv: 200, pv: 1700, amt: 1700 },
-    { name: "Page E", uv: 270, pv: 1900, amt: 1900 },
-    { name: "Page F", uv: 200, pv: 1700, amt: 1700 },
+  const salesData = [
+    { name: "Jan", uv: 400, pv: 2400, amt: 2400 },
+    { name: "Feb", uv: 300, pv: 1800, amt: 1800 },
+    { name: "Mar", uv: 300, pv: 1800, amt: 1800 },
+    { name: "Apr", uv: 200, pv: 1700, amt: 1700 },
+    { name: "May", uv: 270, pv: 1900, amt: 1900 },
+    { name: "Jun", uv: 200, pv: 1700, amt: 1700 },
   ];
 
-  const salesData = [
+  const earningsData = [
     {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
+      name: "Jan",
+      expenses: 4000,
+      income: 2400,
       amt: 2400,
     },
     {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
+      name: "Feb",
+      expenses: 3000,
+      income: 1398,
       amt: 2210,
     },
     {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
+      name: "Mar",
+      expenses: 2000,
+      income: 9800,
       amt: 2290,
     },
     {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
+      name: "Apr",
+      expenses: 2780,
+      income: 3908,
       amt: 2000,
     },
     {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
+      name: "May",
+      expenses: 1890,
+      income: 4800,
       amt: 2181,
     },
     {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
+      name: "Jun",
+      expenses: 2390,
+      income: 3800,
       amt: 2500,
     },
     {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
+      name: "Jul",
+      expenses: 3490,
+      income: 4300,
       amt: 2100,
     },
   ];
 
-  const userData01 = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-  ];
+  
   const userData02 = [
-    { name: "A1", value: 100 },
-    { name: "A2", value: 300 },
-    { name: "B1", value: 100 },
-    { name: "B2", value: 80 },
-    { name: "B3", value: 40 },
-    { name: "B4", value: 30 },
-    { name: "B5", value: 50 },
-    { name: "C1", value: 100 },
-    { name: "C2", value: 200 },
-    { name: "D1", value: 150 },
-    { name: "D2", value: 50 },
+    { name: "Jan", value: 100 },
+    { name: "Feb", value: 300 },
+    { name: "Mar", value: 100 },
+    { name: "Apr", value: 80 },
+    { name: "May", value: 40 },
+    { name: "Jun", value: 30 },
+    { name: "Jul", value: 50 },
+    { name: "Aug", value: 100 },
+    { name: "Sep", value: 200 },
+    { name: "Oct", value: 150 },
+    { name: "Nov", value: 50 },
+    { name: "Dec", value: 30 },
   ];
   return (
     <div className="dashboard">
@@ -131,10 +127,10 @@ function Dashboard() {
         </div>
       </div>
       <div className="transactions">
-        <div className="earnings">
-          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Earnings</h1>
+        <div className="sales">
+          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Sales</h1>
           <ResponsiveContainer width="90%" height="80%">
-            <LineChart width={400} height={200} data={EarningsData}>
+            <LineChart width={400} height={200}  data={salesData}>
             <Tooltip />
               <Line type="monotone" dataKey="uv" stroke="#f2f5f5" />
               <CartesianGrid stroke="#f2f5f5" />
@@ -143,13 +139,13 @@ function Dashboard() {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className="sales">
-          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Sales</h1>
+        <div className="earnings">
+          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Earnings</h1>
           <ResponsiveContainer width="100%" height="80%">
             <BarChart
               width={500}
               height={300}
-              data={salesData}
+              data={earningsData}
               margin={{
                 top: 5,
                 right: 30,
@@ -157,18 +153,17 @@ function Dashboard() {
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
               <XAxis stroke="#f2f5f5" dataKey="name" />
               <YAxis stroke="#f2f5f5" />
               <Tooltip />
               <Legend />
               <Bar
-                dataKey="pv"
+                dataKey="income"
                 fill="#f2f5f5"
                 activeBar={<Rectangle fill="pink" stroke="blue" />}
               />
               <Bar
-                dataKey="uv"
+                dataKey="expenses"
                 fill="#37b9f1"
                 activeBar={<Rectangle fill="gold" stroke="purple" />}
               />
@@ -181,14 +176,6 @@ function Dashboard() {
             <PieChart width={400} height={400}>
             <Tooltip />
             <Legend />
-              <Pie
-                data={userData01}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                outerRadius={60}
-                fill="#f2f5f5"
-              />
               <Pie
                 data={userData02}
                 dataKey="value"

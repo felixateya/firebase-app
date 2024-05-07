@@ -21,7 +21,7 @@
   background-position: center;
 }
 
-.details {
+.login-form, .register-form {
   width: 375px;
   height: max-content;
   min-height: 350px;
@@ -34,15 +34,16 @@
   padding: 40px 10px 10px 10px;
   box-shadow: inset 6px 6px 6px #ecd592, inset -6px -6px 6px #cdbaa1;
   transition: 0.3s ease-in-out;
+  position: relative;
 }
 
-.details h2,
-.details h1 {
+.login-form h2, .register-form h2,
+.login-form h1, .register-form h1 {
   color: #f9f9f9;
   text-align: center;
 }
 
-.details input {
+.login-form input, .register-form input {
   width: 80%;
   padding: 10px;
   border-radius: 5px;
@@ -95,7 +96,7 @@
   color: orangered;
 }
 
-.eye {
+.eye-login {
   font-size: 30px;
   color: #ede5db;
   position: absolute;
@@ -113,7 +114,7 @@
   margin-left: 20px;
 }
 
-.details button {
+.login-form button, .register-form button {
   width: 75%;
   padding: 10px 2px;
   background-color: #ecd592;
@@ -128,17 +129,17 @@
   transition: 0.2s ease-in-out;
 }
 
-.details button:hover {
+.login-form button:hover, .register-form button:hover {
   color: #ecd592;
   background-color: transparent;
   border: 4px solid #413029;
 }
 
-.details button:disabled {
+.login-form button:disabled, .register-form button:disabled {
   cursor: not-allowed;
 }
 
-.details div {
+.login-form div, .register-form div {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -148,18 +149,18 @@
   padding: 5px 10px;
 }
 
-.details p {
+.login-form p, .register-form p {
   color: #ecd592;
   font-size: 17px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 
-.details p:hover {
+.login-form p:hover, .register-form p:hover {
   color: #f9f9f9;
 }
 
-.details div a {
+.login-form div a, .register-form div a {
   /* text-decoration: none; */
   color: #ecd592;
   font-size: 16px;
@@ -167,7 +168,7 @@
   margin-left: 15px;
 }
 
-.details div a:hover {
+.login-form div a:hover, .register-form div a:hover {
   color: #f7f7f7;
 }
 
@@ -189,7 +190,7 @@
   }
 }
 
-.details input::placeholder {
+.login-form input::placeholder, .register-form input::placeholder {
   color: #ecd592;
   font-size: 16px;
   font-weight: 600;
@@ -505,7 +506,7 @@
   box-shadow: inset 2px 2px 4px #926049, inset 2px 2px 4px #926049,
     inset -2px -2px 4px #926049, inset -2px -2px 4px #926049;
   border-radius: 12px;
-  margin-left: 30px;
+  
 }
 
 .sales {
@@ -515,6 +516,7 @@
   box-shadow: inset 2px 2px 4px #926049, inset 2px 2px 4px #926049,
     inset -2px -2px 4px #926049, inset -2px -2px 4px #926049;
   border-radius: 12px;
+  margin-left: 30px;
 }
 
 .users {
@@ -576,7 +578,7 @@
 
 @keyframes scale-up4 {
   20% {
-    background-color: #070d64;
+    background-color: #37b9f1;
     transform: scaleY(1.5);
   }
 
