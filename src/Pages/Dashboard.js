@@ -132,7 +132,7 @@ function Dashboard() {
       </div>
       <div className="transactions">
         <div className="earnings">
-          <h1 style={{ color: "#f2f5f5" }}>Earnings</h1>
+          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Earnings</h1>
           <ResponsiveContainer width="90%" height="80%">
             <LineChart width={400} height={200} data={EarningsData}>
             <Tooltip />
@@ -144,7 +144,7 @@ function Dashboard() {
           </ResponsiveContainer>
         </div>
         <div className="sales">
-          <h1 style={{ color: "#f2f5f5" }}>Sales</h1>
+          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Sales</h1>
           <ResponsiveContainer width="100%" height="80%">
             <BarChart
               width={500}
@@ -169,17 +169,18 @@ function Dashboard() {
               />
               <Bar
                 dataKey="uv"
-                fill="#000222"
+                fill="#37b9f1"
                 activeBar={<Rectangle fill="gold" stroke="purple" />}
               />
             </BarChart>
           </ResponsiveContainer>
         </div>
         <div className="users">
-          <h1 style={{ color: "#f2f5f5" }}>Users</h1>
+          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Users</h1>
           <ResponsiveContainer width="90%" height="80%">
             <PieChart width={400} height={400}>
             <Tooltip />
+            <Legend />
               <Pie
                 data={userData01}
                 dataKey="value"
@@ -195,7 +196,7 @@ function Dashboard() {
                 cy="50%"
                 innerRadius={70}
                 outerRadius={90}
-                fill="#000222"
+                fill="#37b9f1"
               />
             </PieChart>
           </ResponsiveContainer>
