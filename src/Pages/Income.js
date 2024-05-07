@@ -5,19 +5,36 @@ function Income() {
   return (
     <div className="income">
     <Button className="add" variant="primary">Add Income</Button>
-      <Table>
+    <Table>
         <Table.Header>
-          <Table.Row>Salary</Table.Row>
-          <Table.Row>Utilities</Table.Row>
-          <Table.Row>Revenue</Table.Row>
-          <Table.Row>Other Expenses</Table.Row>
+          <h2>Salary</h2>
+          <h2>Expenses</h2>
+          <h2>Revenue</h2>
+          <h2>Sales</h2>
+          <h2>Net Income</h2>
         </Table.Header>
-        <Table.Body>
-          <Table.Row>$2000</Table.Row>
-          <Table.Row>$5678</Table.Row>
-          <Table.Row>$234</Table.Row>
-        </Table.Body>
-        <Table.Footer><h5>Income</h5></Table.Footer>
+        <Table.Header>
+          <p>$2000</p>
+          <p>$5678</p>
+          <p>$234</p>
+          <p>$5678</p>
+          <p>$234</p>
+        </Table.Header>
+        <Table.Header>
+          <p>$2000</p>
+          <p>$5678</p>
+          <p>$234</p>
+          <p>$5678</p>
+          <p>$234</p>
+        </Table.Header>
+        <Table.Header>
+          <p>$2000</p>
+          <p>$5678</p>
+          <p>$234</p>
+          <p>$5678</p>
+          <p>$234</p>
+        </Table.Header>
+        <Table.Footer><h5>Fiscall LLC Yearly Income</h5></Table.Footer>
       </Table>
     </div>
   );
