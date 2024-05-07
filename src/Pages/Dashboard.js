@@ -41,7 +41,7 @@ function Dashboard() {
     {
       name: "Mar",
       expenses: 2000,
-      income: 9800,
+      income: 3500,
       amt: 2290,
     },
     {

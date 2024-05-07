@@ -655,3 +655,9 @@
 }
 
 /* TABLE END */
+
+.bg-dark{
+  background: #92604967;
+  box-shadow: inset 2px 2px 4px #926049, inset 2px 2px 4px #926049,
+    inset -2px -2px 4px #926049, inset -2px -2px 4px #926049;
+}

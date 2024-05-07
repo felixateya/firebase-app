@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import Loader from "./Components/Loader";
 // Lazy Loading Pages
 const Register = lazy(() => import("./Pages/Register"));

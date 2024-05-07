@@ -9,11 +9,11 @@ function MyModal({ show, signout, handleClose }) {
         show={show}
         onHide={handleClose}
       >
-        <Modal.Header className="bg-dark text-white">
+        <Modal.Header className=" bg-dark text-white">
           <Modal.Title id="contained-modal-title-vcenter">Log Out</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark text-white">Are you sure you want to log out?</Modal.Body>
-        <Modal.Footer className="bg-dark text-white">
+        <Modal.Body className=" bg-dark text-white">Are you sure you want to log out?</Modal.Body>
+        <Modal.Footer className=" bg-dark text-white">
           <Button variant="danger" onClick={handleClose}>
             No
           </Button>
