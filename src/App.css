@@ -32,7 +32,7 @@
   align-items: center;
   background-color: rgba(46, 16, 5, 0.3);
   padding: 40px 10px 10px 10px;
-  box-shadow: inset 6px 6px 6px #ecd592, inset -6px -6px 6px #cdbaa1;
+  box-shadow: inset 6px 6px 6px #926049, inset -6px -6px 6px #926049;
   transition: 0.3s ease-in-out;
   position: relative;
 }
@@ -376,6 +376,7 @@
   background-color: #000222;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
     url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg);
+    /* background: #000222; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -561,7 +562,7 @@
   display: inline-block;
   width: 4px;
   height: 30px;
-  background-color: #926049;
+  background-color: #f2f5f5;
   border-radius: 10px;
   animation: scale-up4 1s linear infinite;
 }

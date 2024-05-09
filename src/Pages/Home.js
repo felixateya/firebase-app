@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate,} from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Loader from "../Components/Loader";
@@ -78,8 +78,7 @@ handleClose()
 
   const style = {
     backgroundColor: "#926049a2",
-    width: "90%",
-    height: "90%"
+    width: "100%",
   };
 
   
@@ -90,9 +89,7 @@ handleClose()
       <Navbar   signOut={handleShow} />
       <main>
       <Header user={user}/>
-      <Suspense fallback={<Loader style={style} />}>
-      <Outlet user={user}/>
-      </Suspense>
+      <Outlet/>
         {isLoading && <Loader style={style} />}
       <MyModal show={show} signout={signout} handleClose={handleClose} handleShow={handleShow}/>
       </main>

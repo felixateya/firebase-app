@@ -1,5 +1,6 @@
 import React from "react";
 import { FaDollarSign, FaBookmark, FaChartLine, FaUser } from "react-icons/fa";
+
 import {
   Bar,
   BarChart,
@@ -15,6 +16,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+
 function Dashboard() {
   const salesData = [
     { name: "Jan", uv: 400, pv: 2400, amt: 2400 },
@@ -70,7 +72,6 @@ function Dashboard() {
     },
   ];
 
-  
   const userData02 = [
     { name: "Jan", value: 100 },
     { name: "Feb", value: 300 },
@@ -128,11 +129,11 @@ function Dashboard() {
       </div>
       <div className="transactions">
         <div className="sales">
-          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Sales</h1>
+          <h2 style={{ color: "#f2f5f5", textAlign: "center" }}>Sales</h2>
           <ResponsiveContainer width="90%" height="80%">
-            <LineChart width={400} height={200}  data={salesData}>
-            <Tooltip />
-              <Line type="monotone" dataKey="uv" stroke="#f2f5f5" />
+            <LineChart width={400} height={200} data={salesData}>
+              <Tooltip />
+              <Line type="monotone" dataKey="uv" stroke="#37b9f1" />
               <CartesianGrid stroke="#f2f5f5" />
               <XAxis stroke="#f2f5f5" dataKey="name" />
               <YAxis stroke="#f2f5f5" />
@@ -140,7 +141,7 @@ function Dashboard() {
           </ResponsiveContainer>
         </div>
         <div className="earnings">
-          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Earnings</h1>
+          <h2 style={{ color: "#f2f5f5", textAlign: "center" }}>Earnings</h2>
           <ResponsiveContainer width="100%" height="80%">
             <BarChart
               width={500}
@@ -171,11 +172,11 @@ function Dashboard() {
           </ResponsiveContainer>
         </div>
         <div className="users">
-          <h1 style={{ color: "#f2f5f5", textAlign: 'center' }}>Users</h1>
+          <h2 style={{ color: "#f2f5f5", textAlign: "center" }}>Users</h2>
           <ResponsiveContainer width="90%" height="80%">
             <PieChart width={400} height={400}>
-            <Tooltip />
-            <Legend />
+              <Tooltip />
+              <Legend />
               <Pie
                 data={userData02}
                 dataKey="value"
@@ -183,7 +184,8 @@ function Dashboard() {
                 cy="50%"
                 innerRadius={70}
                 outerRadius={90}
-                fill="#37b9f1"
+                fill="#f2f5f5"
+                stroke="#37b9f1"
               />
             </PieChart>
           </ResponsiveContainer>
