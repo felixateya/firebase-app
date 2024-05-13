@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-    url(https://source.unsplash.com/1366x768/?finance);
+    url(/public/home-bg.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -49,7 +49,6 @@
   border-radius: 5px;
   outline: none;
   margin-top: 20px;
-  /* margin-left: 40px; */
   background-color: transparent;
   border-left: transparent;
   border-right: transparent;
@@ -68,20 +67,20 @@
   width: 100%;
   height: 100vh;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-    url(https://source.unsplash.com/1366x768/?error);
-  background: #000222;
+    url(/public/home-bg.jpeg);
+  /* background: #000222; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .page-not-found h1 {
-  color: red;
+  color: #37b9f1;
 }
 .not-found {
   width: 150px;
   padding: 10px;
-  background-color: orangered;
+  background-color: #ecd592;
   color: #926049;
   font-weight: 700;
   border: none;
@@ -93,7 +92,7 @@
 
 .not-found:hover {
   background-color: #926049;
-  color: orangered;
+  color: #f2f5f5;
 }
 
 .eye-login {
@@ -227,7 +226,7 @@
 
 .extend {
   color: #000222;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 30px;
   padding: 4px;
   display: flex;
@@ -371,11 +370,10 @@
 .home {
   width: 100%;
   height: 100vh;
-  padding: 4px;
   display: flex;
   background-color: #000222;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-    url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg);
+    url(/public/home-bg.jpeg);
     /* background: #000222; */
   background-size: cover;
   background-repeat: no-repeat;

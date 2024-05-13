@@ -1,8 +1,10 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Loader from "./Components/Loader";
+// import ErrorPage from "./Pages/ErrorPage";
+
 // Lazy Loading Pages
 const Register = lazy(() => import("./Pages/Register"));
 const Login = lazy(() => import("./Pages/Login"));
@@ -19,11 +21,12 @@ const style = {
 };
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader style={style} />}>
         <Routes>
-          <Route path='login' element={<Login />} />
+          <Route path='login' element={<Login />}/>
           <Route path="register" element={<Register />} />
           <Route path="/" element={<Home />}>
             {/* <Route index element={<Welcome />} /> */}

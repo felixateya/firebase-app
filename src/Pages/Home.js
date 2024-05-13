@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate,} from "react-router-dom";
+import { Outlet, useNavigate} from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Loader from "../Components/Loader";
 import MyModal from "../Components/MyModal";
@@ -19,6 +19,10 @@ function Home() {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  // const [searchParams, setSearchParams] = useSearchParams("")
+
+  
+
 
   // const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -45,6 +49,8 @@ function handleClose () {
             const username = userDoc.data().userName;
             document.title = `Fiscall LLC | ${username}`;
             setUser(username);
+            // setSearchParams(`${username}:${user.uid}`)
+            
           });
         };
         FetchUser();
@@ -78,7 +84,6 @@ handleClose()
 
   const style = {
     backgroundColor: "#926049a2",
-    width: "100%",
   };
 
   
@@ -90,9 +95,9 @@ handleClose()
       <main>
       <Header user={user}/>
       <Outlet/>
-        {isLoading && <Loader style={style} />}
-      <MyModal show={show} signout={signout} handleClose={handleClose} handleShow={handleShow}/>
       </main>
+      <MyModal show={show} signout={signout} handleClose={handleClose} handleShow={handleShow}/>
+        {isLoading && <Loader style={style} />}
     </div>
   );
 }
