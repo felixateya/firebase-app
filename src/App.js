@@ -17,7 +17,7 @@ const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
 // const Welcome = lazy(() => import("./Pages/Welcome"));
 
 const style = {
-  backgroundColor: "#926049",
+  backgroundColor: "#293A58",
 };
 
 function App() {
