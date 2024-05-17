@@ -72,7 +72,28 @@ function Home() {
     });
   }, [auth, db, navigate]);
 
-  
+  useEffect(() => {
+    const setSessionPersistence = async () => {
+      try {
+        // Check if a user is already logged in
+        onAuthStateChanged(auth, async (user) => {
+          if (!user) {
+            // If no user is logged in, set session persistence
+            await setPersistence(auth, browserSessionPersistence);
+            // Navigate to the login page
+            navigate("/login");
+          } else {
+            // User is already logged in, no need to change persistence or navigate
+            console.log('User is already logged in');
+          }
+        });
+      } catch (error) {
+        console.error("Error setting persistence:", error);
+      }
+    };
+
+    setSessionPersistence();
+  }, [auth, navigate]);
 
   const signout = () => {
     setIsLoading(true);
