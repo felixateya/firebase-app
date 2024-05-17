@@ -5,6 +5,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   Legend,
   Line,
   LineChart,
@@ -73,13 +74,14 @@ function Dashboard() {
   ];
 
   const userData02 = [
-    { name: "Jan", value: 100 },
-    { name: "Feb", value: 300 },
-    { name: "Mar", value: 100 },
-    { name: "Apr", value: 80 },
-    { name: "May", value: 40 },
-    { name: "Jun", value: 30 },
-  ];
+  { name: 'Group A', value: 400 },
+  { name: 'Group B', value: 300 },
+  { name: 'Group C', value: 300 },
+  { name: 'Group D', value: 200 },
+];
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
   return (
     <div className="dashboard">
       <div className="overview">
@@ -137,20 +139,22 @@ function Dashboard() {
         <div className="users">
           <h2 style={{ color: "#f2f5f5", textAlign: "center", marginTop:"10px" }}>Users</h2>
           <ResponsiveContainer width="90%" height="80%">
-            <PieChart width={400} height={200}>
-              <Tooltip />
-              <Legend />
-              <Pie
-                data={userData02}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={70}
-                outerRadius={90}
-                fill="#f2f5f5"
-                stroke="#7485F1"
-              />
-            </PieChart>
+          <PieChart width={400} height={400}>
+          <Pie
+            data={userData02}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {userData02.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+        </PieChart>
           </ResponsiveContainer>
         </div>
         <div className="earnings">
