@@ -137,7 +137,6 @@ const IncomeModal = ({
   ...props
 }) => {
   const {
-    monthRef,
     applianceRef,
     exportsRef,
     electronicsRef,
@@ -156,14 +155,12 @@ const IncomeModal = ({
         </Modal.Header>
         <Modal.Body className="bg-dark text-white">
           <Form id="addIncome" onSubmit={handleAddIncome}>
+            
             <Form.Group>
-              <Form.Label>Month</Form.Label>
-              <Form.Control className="bg-dark text-white" autoFocus ref={monthRef} placeholder="Month" type="text" />
-            </Form.Group>
-            <Form.Group >
               <Form.Label>Appliances</Form.Label>
               <Form.Control className="bg-dark text-white"
                 ref={applianceRef}
+                autoFocus
                 placeholder="Appliances"
                 type="text"
               />

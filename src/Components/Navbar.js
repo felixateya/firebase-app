@@ -6,7 +6,7 @@ import { GiExpense } from "react-icons/gi";
 import {
   HiArrowRightOnRectangle,
   HiChevronRight,
-  HiChevronLeft
+  HiChevronLeft,
 } from "react-icons/hi2";
 import { NavLink, Link } from "react-router-dom";
 function Navbar({ signOut }) {
@@ -20,31 +20,44 @@ function Navbar({ signOut }) {
         <HiChevronLeft onClick={handleIsOpen} className="extend" />
       )}
       <Link to="/" className="logo">
-        <SiDwavesystems />{" "}
+        <h5>
+          <SiDwavesystems />
+        </h5>
         <h5 className={`${isOpen ? "flex" : "link"}`}>Fiscall LLC</h5>
       </Link>
 
       <div className="links">
         <NavLink to="/">
-          <RiDashboardFill />
+          <h5>
+            <RiDashboardFill />
+          </h5>
           <h5 className={`${isOpen ? "flex" : "link"}`}>Dashboard</h5>
         </NavLink>
         <NavLink to="/income">
-          <SiWebmoney />
+          <h5>
+            <SiWebmoney />
+          </h5>
           <h5 className={`${isOpen ? "flex" : "link"}`}>Income</h5>
         </NavLink>
         <NavLink to="/expenses">
-          <GiExpense />
+          <h5>
+            <GiExpense />
+          </h5>
           <h5 className={`${isOpen ? "flex" : "link"}`}>Expenses</h5>
         </NavLink>
         <NavLink to="/profile">
-          <CgProfile />
+          <h5>
+            <CgProfile />
+          </h5>
           <h5 className={`${isOpen ? "flex" : "link"}`}>Profile</h5>
         </NavLink>
       </div>
-      
+
       <button className="logout" onClick={signOut}>
-        <HiArrowRightOnRectangle /> <h5 className={`${isOpen ? "flex" : "link"}`}>Log out</h5>
+        <h5>
+          <HiArrowRightOnRectangle />
+        </h5>
+        <h5 className={`${isOpen ? "flex" : "link"}`}>Log out</h5>
       </button>
     </div>
   );

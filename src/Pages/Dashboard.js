@@ -133,7 +133,7 @@ function Dashboard() {
           <ResponsiveContainer width="90%" height="80%">
             <LineChart width={400} height={200} data={salesData}>
               <Tooltip />
-              <Line type="monotone" dataKey="uv" stroke="#37b9f1" />
+              <Line type="monotone" dataKey="uv" stroke="#8146FF" />
               <CartesianGrid stroke="#f2f5f5" />
               <XAxis stroke="#f2f5f5" dataKey="name" />
               <YAxis stroke="#f2f5f5" />
@@ -165,7 +165,7 @@ function Dashboard() {
               />
               <Bar
                 dataKey="expenses"
-                fill="#37b9f1"
+                fill="#8146FF"
                 activeBar={<Rectangle fill="gold" stroke="purple" />}
               />
             </BarChart>
@@ -185,7 +185,7 @@ function Dashboard() {
                 innerRadius={70}
                 outerRadius={90}
                 fill="#f2f5f5"
-                stroke="#37b9f1"
+                stroke="#8146FF"
               />
             </PieChart>
           </ResponsiveContainer>
