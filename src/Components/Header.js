@@ -1,5 +1,5 @@
 import { useResolvedPath } from "react-router";
-import { FaRegBell, FaCog } from "react-icons/fa";
+import { FaRegBell } from "react-icons/fa";
 
 function Header({ user }) {
   const params = useResolvedPath();
@@ -14,7 +14,7 @@ function Header({ user }) {
           <input type="search" placeholder="Search..." name="serach" />
           <FaSearch />
         </div> */}
-        <FaCog/>
+        
         <FaRegBell />
         <div className="profile">
           <h5 className="img"> </h5>

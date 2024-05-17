@@ -9,7 +9,7 @@ import {
   HiChevronLeft,
 } from "react-icons/hi2";
 import { NavLink, Link } from "react-router-dom";
-import { FaPowerOff } from "react-icons/fa";
+import { FaCog, FaPowerOff } from "react-icons/fa";
 function Navbar({ signOut }) {
   const [isOpen, setIsOpen] = useState(false);
   const handleIsOpen = () => setIsOpen((is) => !is);
@@ -51,6 +51,12 @@ function Navbar({ signOut }) {
             <CgProfile />
           </h5>
           <h5 className={`${isOpen ? "flex" : "link"}`}>Profile</h5>
+        </NavLink>
+        <NavLink to="/settings">
+          <h5>
+          <FaCog/>
+          </h5>
+          <h5 className={`${isOpen ? "flex" : "link"}`}>Settings</h5>
         </NavLink>
       </div>
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Loader from "./Components/Loader";
+import Settings from "./Pages/Settings";
 // import ErrorPage from "./Pages/ErrorPage";
 
 // Lazy Loading Pages
@@ -34,6 +35,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="income" element={<Income />} />
             <Route path="expenses" element={<Expenses />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
