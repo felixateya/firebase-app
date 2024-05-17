@@ -79,12 +79,6 @@ function Dashboard() {
     { name: "Apr", value: 80 },
     { name: "May", value: 40 },
     { name: "Jun", value: 30 },
-    { name: "Jul", value: 50 },
-    { name: "Aug", value: 100 },
-    { name: "Sep", value: 200 },
-    { name: "Oct", value: 150 },
-    { name: "Nov", value: 50 },
-    { name: "Dec", value: 30 },
   ];
   return (
     <div className="dashboard">
@@ -129,19 +123,38 @@ function Dashboard() {
       </div>
       <div className="transactions">
         <div className="sales">
-          <h2 style={{ color: "#f2f5f5", textAlign: "center" }}>Sales</h2>
+          <h2 style={{ color: "#f2f5f5", textAlign: "center", marginTop:"10px" }}>Sales</h2>
           <ResponsiveContainer width="90%" height="80%">
             <LineChart width={400} height={200} data={salesData}>
               <Tooltip />
-              <Line type="monotone" dataKey="uv" stroke="#8146FF" />
+              <Line type="monotone" dataKey="uv" stroke="#7485F1" />
               <CartesianGrid stroke="#f2f5f5" />
               <XAxis stroke="#f2f5f5" dataKey="name" />
               <YAxis stroke="#f2f5f5" />
             </LineChart>
           </ResponsiveContainer>
         </div>
+        <div className="users">
+          <h2 style={{ color: "#f2f5f5", textAlign: "center", marginTop:"10px" }}>Users</h2>
+          <ResponsiveContainer width="90%" height="80%">
+            <PieChart width={400} height={200}>
+              <Tooltip />
+              <Legend />
+              <Pie
+                data={userData02}
+                dataKey="value"
+                cx="50%"
+                cy="50%"
+                innerRadius={70}
+                outerRadius={90}
+                fill="#f2f5f5"
+                stroke="#7485F1"
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
         <div className="earnings">
-          <h2 style={{ color: "#f2f5f5", textAlign: "center" }}>Earnings</h2>
+          <h2 style={{ color: "#f2f5f5", textAlign: "center", marginTop:"10px" }}>Earnings</h2>
           <ResponsiveContainer width="100%" height="80%">
             <BarChart
               width={500}
@@ -165,30 +178,15 @@ function Dashboard() {
               />
               <Bar
                 dataKey="expenses"
-                fill="#8146FF"
+                fill="#7485F1"
                 activeBar={<Rectangle fill="gold" stroke="purple" />}
               />
             </BarChart>
           </ResponsiveContainer>
         </div>
         <div className="users">
-          <h2 style={{ color: "#f2f5f5", textAlign: "center" }}>Users</h2>
-          <ResponsiveContainer width="90%" height="80%">
-            <PieChart width={400} height={400}>
-              <Tooltip />
-              <Legend />
-              <Pie
-                data={userData02}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                innerRadius={70}
-                outerRadius={90}
-                fill="#f2f5f5"
-                stroke="#8146FF"
-              />
-            </PieChart>
-          </ResponsiveContainer>
+          <h2 style={{ color: "#f2f5f5", textAlign: "center", marginTop:"20px" }}>Latest Transactions</h2>
+          
         </div>
       </div>
     </div>

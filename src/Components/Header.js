@@ -7,7 +7,7 @@ function Header({ user }) {
   return (
     <header className="header">
       <h4>
-        Fiscall | <span>{params.pathname  === '/' ? 'dashboard' : params.pathname.replace("/", "")}</span>
+        {params.pathname  === '/' ? 'Dashboard' : params.pathname.replace("/", "")}
       </h4>
       <div className="all">
         {/* <div className="search">
@@ -18,7 +18,7 @@ function Header({ user }) {
         <FaRegBell />
         <div className="profile">
           <h5 className="img"> </h5>
-          <p>{user || "test user"}</p>
+          <p>{user}</p>
         </div>
       </div>
     </header>

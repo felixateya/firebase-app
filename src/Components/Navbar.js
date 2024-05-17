@@ -9,6 +9,7 @@ import {
   HiChevronLeft,
 } from "react-icons/hi2";
 import { NavLink, Link } from "react-router-dom";
+import { FaPowerOff } from "react-icons/fa";
 function Navbar({ signOut }) {
   const [isOpen, setIsOpen] = useState(false);
   const handleIsOpen = () => setIsOpen((is) => !is);
@@ -55,7 +56,7 @@ function Navbar({ signOut }) {
 
       <button className="logout" onClick={signOut}>
         <h5>
-          <HiArrowRightOnRectangle />
+          <FaPowerOff />
         </h5>
         <h5 className={`${isOpen ? "flex" : "link"}`}>Log out</h5>
       </button>

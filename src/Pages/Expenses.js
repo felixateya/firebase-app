@@ -1,25 +1,64 @@
-import { Button } from "react-bootstrap";
-import Table from "../Components/Table";
+import { Button, Table } from "react-bootstrap";
+
 
 
 function Expenses() {
   return (
     <div className="expenses">
     <Button className="add" variant="primary">Add Expense</Button>
-      <Table>
-        <Table.Header>
-          <h2>Salary</h2>
-          <h2>Expenses</h2>
-          <h2>Revenue</h2>
-          <h2>Sales</h2>
-          <h2>Other expenses</h2>
-        </Table.Header>
-        <Table.Row>
-          <p>$2000</p>
-          <p>$5678</p>
-          <p>$234</p>
-        </Table.Row>
-        <Table.Footer><h5>Fiscall LLC Yearly Expenses</h5></Table.Footer>
+    <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Appliances</th>
+            <th>Electronics</th>
+            <th>Exports</th>
+            <th>services</th>
+            <th>hardware</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jan</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>Feb</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Mar</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Apr</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Jun</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
       </Table>
     </div>
   );
