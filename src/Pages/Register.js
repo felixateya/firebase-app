@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getFirestore } from "firebase/firestore";
 import { app } from "../Firebase";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import MyToast from "../Components/Toast";
+// import MyToast from "../Components/Toast";
+import toast, { Toaster } from "react-hot-toast";
 
 function Register() {
   const emailRef = useRef();
@@ -18,8 +19,6 @@ function Register() {
 
   const navigate = useNavigate();
   const db = getFirestore(app);
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,26 +50,25 @@ function Register() {
             .catch((err) => {
               // const errorCode = err.code;
               // setError(err.message)
-              
               // ..
             });
 
           // ...
         })
         .catch((err) => {
+          toast.error(err.message.split(' ')[2]);
           setError(err.message);
-          console.log(err.message)
-          setIsLoading(false)
+          console.log(err.message);
+          setIsLoading(false);
           // ..
         });
     }
-
   };
   return (
     <div className="register">
       <form className="register-form" onSubmit={handleSubmit}>
         <h1>Fiscall LLC</h1>
-        <br/>
+        <br />
         <h2>Create Account</h2>
         <input
           type="text"
@@ -86,10 +84,17 @@ function Register() {
           placeholder="Enter your email address *"
           required
         />
-        { visible ? <AiFillEyeInvisible onClick={()=> setVisible(false)} className="eye-login regis" />  : <AiFillEye onClick={()=> setVisible(true)} className="eye-login regis" />
-            
-          
-          }
+        {visible ? (
+          <AiFillEyeInvisible
+            onClick={() => setVisible(false)}
+            className="eye-login regis"
+          />
+        ) : (
+          <AiFillEye
+            onClick={() => setVisible(true)}
+            className="eye-login regis"
+          />
+        )}
         <input
           type={visible ? "text" : "password"}
           ref={passwordRef}
@@ -106,7 +111,8 @@ function Register() {
         </div>
       </form>
       {isLoading && <Loader />}
-      {error && <MyToast error = {error} />}
+      {/* {error && <MyToast error = {error} />} */}
+      <Toaster position="bottom-left" reverseOrder={false} />
     </div>
   );
 }

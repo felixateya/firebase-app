@@ -7,9 +7,10 @@ import {
 import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import MyToast from "../Components/Toast";
+// import MyToast from "../Components/Toast";
 import {app} from '../Firebase'
 import PassReset from "../Components/PassReset";
+import toast, {Toaster} from "react-hot-toast";
 
 function Login() {
   const emailRef = useRef();
@@ -41,13 +42,14 @@ function Login() {
         const user = userCredential.user;
         console.log(user + " successfull");
         // ...
-
+        toast.success("Signed in successfully")
         navigate("/");
       })
       .catch((err) => {
         setIsLoading(false);
         console.log(err.message);
         setError(err.message);
+        toast.error(err.message.split(" ")[2].replace('auth/', ""))
       });
   };
 
@@ -106,7 +108,8 @@ function Login() {
         <p onClick={() => setModalShow(true)}>Reset password?</p>
       </form>
       {isLoading && <Loader />}
-      {error && <MyToast error={error} />}
+      {/* {error && <MyToast error={error} />} */}
+      <Toaster position="top-right" reverseOrder={false} />
       <PassReset
         reset={reset}
         modalShow={modalShow}

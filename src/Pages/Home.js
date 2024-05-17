@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate} from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Loader from "../Components/Loader";
 import MyModal from "../Components/MyModal";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  browserSessionPersistence,
+  setPersistence,
+} from "firebase/auth";
 import {
   getDocs,
   collection,
@@ -21,36 +27,44 @@ function Home() {
   const [show, setShow] = useState(false);
   // const [searchParams, setSearchParams] = useSearchParams("")
 
-  
-
-
   // const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-function handleClose () {
-  setShow(false)
-}
+  function handleClose() {
+    setShow(false);
+  }
   const auth = getAuth();
   const db = getFirestore(app);
-  
+
   useEffect(() => {
+    
     onAuthStateChanged(auth, (user) => {
       if (user === null) {
-        navigate("/login");
+        setPersistence(auth, browserSessionPersistence)
+          .then(() => {
+            // Existing and future Auth states are now persisted in the current
+            // session only. Closing the window would clear any existing state even
+            // if a user forgets to sign out.
+            // ...
+            // New sign-in will be persisted with session persistence.
+            navigate("/login");
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            console.log(error);
+          });
       } else {
         // const UserId = user.uid;
-        
         const FetchUser = async () => {
           const queryDocument = query(
             collection(db, "Users"),
             where("userId", "==", user.uid)
-            );
-            const querySnapShot = await getDocs(queryDocument);
-            querySnapShot.forEach((userDoc) => {
+          );
+          const querySnapShot = await getDocs(queryDocument);
+          querySnapShot.forEach((userDoc) => {
             const username = userDoc.data().userName;
             document.title = `Fiscall LLC | ${username}`;
             setUser(username);
             // setSearchParams(`${username}:${user.uid}`)
-            
           });
         };
         FetchUser();
@@ -58,9 +72,11 @@ function handleClose () {
     });
   }, [auth, db, navigate]);
 
+  
+
   const signout = () => {
     setIsLoading(true);
-handleClose()
+    handleClose();
     const auth = getAuth();
 
     setTimeout(() => {
@@ -69,7 +85,7 @@ handleClose()
         .then(() => {
           // Sign-out successful.
           document.title = "Fiscall LLC";
-        setShow(false)
+          setShow(false);
           navigate("/login");
         })
         .catch((error) => {
@@ -86,18 +102,20 @@ handleClose()
     backgroundColor: "#926049a2",
   };
 
-  
-  
-
   return (
     <div className="home">
-      <Navbar   signOut={handleShow} />
+      <Navbar signOut={handleShow} />
       <main>
-      <Header user={user}/>
-      <Outlet/>
+        <Header user={user} />
+        <Outlet />
       </main>
-      <MyModal show={show} signout={signout} handleClose={handleClose} handleShow={handleShow}/>
-        {isLoading && <Loader style={style} />}
+      <MyModal
+        show={show}
+        signout={signout}
+        handleClose={handleClose}
+        handleShow={handleShow}
+      />
+      {isLoading && <Loader style={style} />}
     </div>
   );
 }
