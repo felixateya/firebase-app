@@ -3,12 +3,12 @@ import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { app } from "../Firebase";
 import { useRef, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import toast, { Toaster } from "react-hot-toast";
 
 function Income() {
   const db = getFirestore(app);
   const auth = getAuth();
   const [show, setShow] = useState(false);
-  const monthRef = useRef();
   const applianceRef = useRef();
   const electronicsRef = useRef();
   const exportsRef = useRef();
@@ -23,7 +23,7 @@ function Income() {
   };
 
   const handleAddIncome = () => {
-    const month = monthRef.current.value;
+    
     const appliances = applianceRef.current.value;
     const electronics = electronicsRef.current.value;
     const incomeExport = exportsRef.current.value;
@@ -36,7 +36,6 @@ function Income() {
         setDoc(newIncome, {
           userID: user.uid,
           incomeID: newIncome.id,
-          month: month,
           electronics: electronics,
           appliances: appliances,
           incomeExport: incomeExport,
@@ -44,9 +43,11 @@ function Income() {
           hardware: hardware,
           timestamp: new Date().getTime(),
         }).then(() => {
+          toast.success("income added successfuly")
           window.location.reload();
         }).catch((error)=>{
             console.log(error)
+            toast.error(error.message)
         })
 
         
@@ -62,7 +63,6 @@ function Income() {
         handleShow={handleShow}
         show={show}
         handleClose={handleClose}
-        monthRef={monthRef}
         applianceRef={applianceRef}
         electronicsRef={electronicsRef}
         exportsRef={exportsRef}
@@ -123,6 +123,7 @@ function Income() {
           </tr>
         </tbody>
       </Table>
+      <Toaster position="top-right" reverseOrder={false}/>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import { app } from "../Firebase";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 // import MyToast from "../Components/Toast";
 import toast, { Toaster } from "react-hot-toast";
-import logo from '../assets/fiscall-logo.png'
+// import logo from '../assets/fiscall-logo.png';
 
 function Register() {
   const emailRef = useRef();
@@ -113,7 +113,7 @@ function Register() {
       </form>
       <div className="addition">
       <h1>Fiscall LLC</h1>
-      <img src={logo} alt="logo"/>
+      {/* <img src={logo} alt="logo"/> */}
       </div>
       {isLoading && <Loader />}
       {/* {error && <MyToast error = {error} />} */}
