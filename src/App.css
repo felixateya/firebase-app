@@ -347,13 +347,12 @@ border: 2px solid #f2f5f5;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  background-color: #926049a2;
   background-color: #293a58;
   backdrop-filter: blur(5px);
 }
 
 .header h4 {
-  color: #8146ff;
+  color: #37b9f1;
   font-size: 18px;
   font-weight: 600;
   text-transform: capitalize;
