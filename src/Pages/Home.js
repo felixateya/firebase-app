@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Loader from "../Components/Loader";
@@ -36,7 +36,6 @@ function Home() {
   const db = getFirestore(app);
 
   useEffect(() => {
-    
     onAuthStateChanged(auth, (user) => {
       if (user === null) {
         setPersistence(auth, browserSessionPersistence)
@@ -84,7 +83,7 @@ function Home() {
             navigate("/login");
           } else {
             // User is already logged in, no need to change persistence or navigate
-            console.log('User is already logged in');
+            console.log("User is already logged in");
           }
         });
       } catch (error) {
@@ -120,15 +119,23 @@ function Home() {
   };
 
   const style = {
-    backgroundColor: "#926049a2",
+    backgroundColor: "#1e2c4775",
+    width: '89%',
+    height: "83%",
+    marginTop: "10%",
+    marginLeft: "5%"
   };
-
+const mainStyle = {
+  backgroundColor: "#1e2c4775",
+}
   return (
     <div className="home">
       <Navbar signOut={handleShow} />
       <main>
         <Header user={user} />
-        <Outlet />
+        <Suspense fallback={<Loader style={style} />}>
+          <Outlet />
+        </Suspense>
       </main>
       <MyModal
         show={show}
@@ -136,7 +143,7 @@ function Home() {
         handleClose={handleClose}
         handleShow={handleShow}
       />
-      {isLoading && <Loader style={style} />}
+      {isLoading && <Loader style={mainStyle} />}
     </div>
   );
 }

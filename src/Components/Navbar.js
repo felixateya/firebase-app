@@ -32,7 +32,7 @@ function Navbar({ signOut }) {
 
       <div className="links">
         {linkTexts.map((myLInk) => (
-          <div key={MyLink.text}>
+          <div key={Math.random()*2}>
             <MyLink to={myLInk.text}>
               <h5>{myLInk.icon}</h5>
               <h5 className={isOpen ? "flex" : "link"}>{myLInk.text}</h5>
