@@ -8,10 +8,10 @@ import Loader from "../Components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 // import MyToast from "../Components/Toast";
-import {app} from '../Firebase'
+import { app } from "../Firebase";
 import PassReset from "../Components/PassReset";
-import toast, {Toaster} from "react-hot-toast";
-import logo from '../assets/logo.svg';
+import toast, { Toaster } from "react-hot-toast";
+import logo from "../assets/logo.svg";
 
 function Login() {
   const emailRef = useRef();
@@ -43,14 +43,14 @@ function Login() {
         const user = userCredential.user;
         console.log(user + " successfull");
         // ...
-        toast.success("Signed in successfully")
+        toast.success("Signed in successfully");
         navigate("/");
       })
       .catch((err) => {
         setIsLoading(false);
         console.log(err.message);
         setError(err.message);
-        toast.error(err.message.split(" ")[2].replace('auth/', ""))
+        toast.error(err.message.split(" ")[2].replace("auth/", ""));
       });
   };
 
@@ -65,7 +65,7 @@ function Login() {
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
-        toast.error(errorMessage)
+        toast.error(errorMessage);
         console.log(errorMessage);
         // ..
       });
@@ -73,12 +73,11 @@ function Login() {
 
   return (
     <div className="login">
-    
       <div className="addition">
-      <h1>Fiscall LLC</h1>
+        <h1>Fiscall LLC</h1>
       </div>
       <form className="form" onSubmit={handleSubmit}>
-      <img src={logo} alt="logo"/>
+        <img src={logo} alt="logo" />
         <h2>Log In</h2>
         <input
           type="email"
@@ -89,21 +88,27 @@ function Login() {
           ref={emailRef}
           placeholder="Enter your email address"
         />
-        {visible ? (
-          <AiFillEyeInvisible
-            onClick={() => setVisible(false)}
-            className="eye-login"
-          />
-        ) : (
-          <AiFillEye onClick={() => setVisible(true)} className="eye-login" />
-        )}
+        <div className="visible-eye">
         <input
-          type={visible ? "text" : "password"}
-          autoComplete="true"
-          required
-          ref={passwordRef}
-          placeholder="Enter your password"
-        />
+            type={visible ? "text" : "password"}
+            autoComplete="true"
+            required
+            ref={passwordRef}
+            placeholder="Enter your password"
+          />
+          <h6>
+          {visible ? (
+            
+            <AiFillEyeInvisible
+              onClick={() => setVisible(false)}
+              className="eye"
+            />
+          ) : (
+            <AiFillEye onClick={() => setVisible(true)} className="eye" />
+          )}
+          </h6>
+          
+        </div>
         <button>Log In</button>
         <div>
           <p>Don't have an Account?</p>
@@ -113,7 +118,7 @@ function Login() {
         </div>
         <p onClick={() => setModalShow(true)}>Reset password?</p>
       </form>
-      
+
       {isLoading && <Loader />}
       {/* {error && <MyToast error={error} />} */}
       <Toaster position="top-right" reverseOrder={false} />

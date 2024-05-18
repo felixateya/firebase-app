@@ -87,17 +87,7 @@ function Register() {
           placeholder="Enter your email address"
           required
         />
-        {visible ? (
-          <AiFillEyeInvisible
-            onClick={() => setVisible(false)}
-            className="eye-login regis"
-          />
-        ) : (
-          <AiFillEye
-            onClick={() => setVisible(true)}
-            className="eye-login regis"
-          />
-        )}
+        <div className="visible-eye">
         <input
           type={visible ? "text" : "password"}
           ref={passwordRef}
@@ -105,6 +95,19 @@ function Register() {
           required
           autoComplete="true"
         />
+        <h6>
+          {visible ? (
+            
+            <AiFillEyeInvisible
+              onClick={() => setVisible(false)}
+              className="eye"
+            />
+          ) : (
+            <AiFillEye onClick={() => setVisible(true)} className="eye" />
+          )}
+          </h6>
+        
+        </div>
         <button>Create Account</button>
         <div>
           <p>Already a User?</p>

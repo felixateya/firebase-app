@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RiDashboardFill } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
-import { SiWebmoney, SiDwavesystems } from "react-icons/si";
+import { SiWebmoney} from "react-icons/si";
 import { GiExpense } from "react-icons/gi";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi2";
 import { Link } from "react-router-dom";

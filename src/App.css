@@ -61,13 +61,13 @@
 }
 
 .form input {
-  width: 80%;
+  width: 75%;
   padding: 10px;
   border-radius: 5px;
   outline: none;
   margin-top: 30px;
   background-color: transparent;
-  border: 2px solid #293a58;
+  border: 2px solid #8146ff;
   color: #f2f5f5;
   font-size: 16px;
   caret-color: #f2f5f5;
@@ -111,22 +111,35 @@ border: 2px solid #f2f5f5;
   background-color: #8146ff;
 }
 
-.eye-login {
+.visible-eye{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: max-content;
+  gap: 4px;
+  border-radius: 7px;
+  margin-top: 20px;
+  
+  /* background-color: red; */
+}
+
+.eye {
   font-size: 30px;
   color: #f2f5f5;
-  position: absolute;
-  top: 63%;
-  left: 90%;
   cursor: pointer;
+  margin-top: 14px;
 }
 
-.regis {
-  top: 73%;
+.visible-eye input{
+  width: 90%;
+  margin-top: 0;
+  margin-left: 14px;
+  border: 2px solid #8146ff;
 }
 
-.reg {
-  margin-left: 20px;
-}
+
+
 
 .form button {
   width: 75%;
@@ -335,7 +348,7 @@ border: 2px solid #f2f5f5;
 }
 
 .links .active {
-  color: #f2f5f5;
+  color: #37b9f1;
   background-color: #1e2c4775;
   font-weight: 700;
 }
