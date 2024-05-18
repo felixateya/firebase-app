@@ -17,7 +17,7 @@ function MyModal({ show, signout, handleClose }) {
           <Button variant="danger" onClick={handleClose}>
             No
           </Button>
-          <Button variant="success" onClick={signout}>
+          <Button autoFocus variant="success" onClick={signout}>
             Yes, Sure.
           </Button>
         </Modal.Footer>
