@@ -6,6 +6,7 @@ import { GiExpense } from "react-icons/gi";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { FaCog, FaPowerOff } from "react-icons/fa";
+import logo from '../assets/logo.svg';
 import { MyLink } from "./MyLink";
 function Navbar({ signOut }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,9 +26,7 @@ function Navbar({ signOut }) {
         <HiChevronLeft onClick={handleIsOpen} className="extend" />
       )}
       <Link to="/" className="logo">
-        <h5>
-          <SiDwavesystems />
-        </h5>
+        <img src={logo} alt=""/>
         <h5 className={`${isOpen ? "flex" : "link"}`}>Fiscall LLC</h5>
       </Link>
 

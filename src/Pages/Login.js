@@ -11,6 +11,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import {app} from '../Firebase'
 import PassReset from "../Components/PassReset";
 import toast, {Toaster} from "react-hot-toast";
+import logo from '../assets/logo.svg';
 
 function Login() {
   const emailRef = useRef();
@@ -77,6 +78,7 @@ function Login() {
       <h1>Fiscall LLC</h1>
       </div>
       <form className="form" onSubmit={handleSubmit}>
+      <img src={logo} alt="logo"/>
         <h2>Log In</h2>
         <input
           type="email"

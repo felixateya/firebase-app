@@ -7,7 +7,7 @@ import { app } from "../Firebase";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 // import MyToast from "../Components/Toast";
 import toast, { Toaster } from "react-hot-toast";
-// import logo from '../assets/fiscall-logo.png';
+import logo from '../assets/logo.svg';
 
 function Register() {
   const emailRef = useRef();
@@ -69,7 +69,9 @@ function Register() {
   return (
     <div className="register">
       <form className="form" onSubmit={handleSubmit}>
+      <img src={logo} alt="logo"/>
         <h2>Create Account</h2>
+
         <input
           type="text"
           autoComplete="true"
@@ -113,7 +115,6 @@ function Register() {
       </form>
       <div className="addition">
       <h1>Fiscall LLC</h1>
-      {/* <img src={logo} alt="logo"/> */}
       </div>
       {isLoading && <Loader />}
       {/* {error && <MyToast error = {error} />} */}
