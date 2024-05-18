@@ -14,54 +14,67 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-    url(/public/home-bg.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    background: #000222;
 }
 
-.login-form,
-.register-form {
-  width: 375px;
-  height: max-content;
+
+
+.addition{
+  width: 50%;
+  height: 100%;
+  background: url(../src/assets/authBg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.addition h1{
+  color: #f2f5f5;
+  text-align: center;
+}
+
+.addition img{
+  width: 200px;
+  margin: 0 auto;
+}
+
+.form {
+  width: 50%;
+  height: 100%;
   min-height: 350px;
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(46, 16, 5, 0.3);
+  background-color: #1e2c47;
   padding: 40px 10px 10px 10px;
-  box-shadow: inset 6px 6px 6px #926049, inset -6px -6px 6px #926049;
   transition: 0.3s ease-in-out;
   position: relative;
 }
 
-.login-form h2,
-.register-form h2,
-.login-form h1,
-.register-form h1 {
+.form h2 {
   color: #f9f9f9;
   text-align: center;
 }
 
-.login-form input,
-.register-form input {
+.form input {
   width: 80%;
   padding: 10px;
   border-radius: 5px;
   outline: none;
-  margin-top: 20px;
+  margin-top: 40px;
   background-color: transparent;
-  border-left: transparent;
-  border-right: transparent;
-  border-top: 2px solid #d7cabb;
-  border-bottom: 2px solid #d7cabb;
-  color: #d7cabb;
+  border: 2px solid #293a58;
+  color: #f2f5f5;
   font-size: 16px;
-  caret-color: white;
+  caret-color: #f2f5f5;
   caret-shape: block;
+}
+
+.form input:focus{
+border: 2px solid #f2f5f5;
 }
 .page-not-found {
   display: flex;
@@ -70,12 +83,7 @@
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-    url(/public/home-bg.jpeg);
-  /* background: #000222; */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: #000222;
 }
 
 .page-not-found h1 {
@@ -84,8 +92,8 @@
 .not-found {
   width: 150px;
   padding: 10px;
-  background-color: #ecd592;
-  color: #926049;
+  background-color: #293a58;
+  color: #f2f5f5;
   font-weight: 700;
   border: none;
   border-radius: 12px;
@@ -95,37 +103,33 @@
 }
 
 .not-found:hover {
-  background-color: #926049;
-  color: #f2f5f5;
+  background-color: #8146ff;
 }
 
 .eye-login {
   font-size: 30px;
-  color: #ede5db;
+  color: #f2f5f5;
   position: absolute;
-  top: 56%;
-  left: 87%;
+  top: 51%;
+  left: 90%;
   cursor: pointer;
 }
 
 .regis {
-  top: 68%;
+  top: 62%;
 }
 
 .reg {
-  /* top: 69%; */
   margin-left: 20px;
 }
 
-.login-form button,
-.register-form button {
+.form button {
   width: 75%;
   padding: 10px 2px;
-  background-color: #ecd592;
-  color: #413029;
-  /* margin-left: 40px; */
+  background-color: #293a58;
+  color: #f2f5f5;
   margin-top: 10px;
-  border: 4px solid #ecd592;
+  border: 4px solid #293a58;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
@@ -133,53 +137,46 @@
   transition: 0.2s ease-in-out;
 }
 
-.login-form button:hover,
-.register-form button:hover {
-  color: #ecd592;
+.form button:hover {
+  color: #f2f5f5;
   background-color: transparent;
-  border: 4px solid #413029;
+  border: 4px solid #f2f5f5;
 }
 
-.login-form button:disabled,
-.register-form button:disabled {
+.form button:disabled {
   cursor: not-allowed;
 }
 
-.login-form div,
-.register-form div {
+.form div {
   width: 90%;
   display: flex;
   justify-content: center;
-  color: #ecd592;
+  color: #f2f5f5;
   font-size: 16px;
   /* margin-left: 40px; */
   padding: 5px 10px;
 }
 
-.login-form p,
-.register-form p {
-  color: #ecd592;
+.form p {
+  color: #f2f5f5;
   font-size: 17px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 
-.login-form p:hover,
-.register-form p:hover {
+.form p:hover {
   color: #f9f9f9;
 }
 
-.login-form div a,
-.register-form div a {
+.form div a {
   /* text-decoration: none; */
-  color: #ecd592;
+  color: #f2f5f5;
   font-size: 16px;
   transition: 0.2s ease-in-out;
   margin-left: 15px;
 }
 
-.login-form div a:hover,
-.register-form div a:hover {
+.form div a:hover {
   color: #f7f7f7;
 }
 
@@ -201,9 +198,8 @@
   }
 }
 
-.login-form input::placeholder,
-.register-form input::placeholder {
-  color: #ecd592;
+.form input::placeholder {
+  color: #f2f5f5;
   font-size: 16px;
   font-weight: 600;
 }
@@ -237,14 +233,14 @@
 }
 
 .extend {
-  color: #000222;
+  color: #f2f2f2;
   font-weight: 900;
   font-size: 30px;
   padding: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ebbea8;
+  background-color: #8146ff;
   border-radius: 50%;
   gap: 10px;
   cursor: pointer;

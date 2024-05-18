@@ -64,6 +64,7 @@ function Login() {
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
+        toast.error(errorMessage)
         console.log(errorMessage);
         // ..
       });
@@ -71,17 +72,20 @@ function Login() {
 
   return (
     <div className="login">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h1>Fiscall LLC</h1>
-        <br />
-        <h2>Login Page</h2>
+    
+      <div className="addition">
+      <h1>Fiscall LLC</h1>
+      </div>
+      <form className="form" onSubmit={handleSubmit}>
+        <h2>Log In</h2>
         <input
           type="email"
+          autoFocus
           autoComplete="true"
           name="email"
           required
           ref={emailRef}
-          placeholder="Enter your email address  *"
+          placeholder="Enter your email address"
         />
         {visible ? (
           <AiFillEyeInvisible
@@ -96,7 +100,7 @@ function Login() {
           autoComplete="true"
           required
           ref={passwordRef}
-          placeholder="Enter your password  *"
+          placeholder="Enter your password"
         />
         <button>Log In</button>
         <div>
@@ -107,6 +111,7 @@ function Login() {
         </div>
         <p onClick={() => setModalShow(true)}>Reset password?</p>
       </form>
+      
       {isLoading && <Loader />}
       {/* {error && <MyToast error={error} />} */}
       <Toaster position="top-right" reverseOrder={false} />
