@@ -1,7 +1,16 @@
 import { Button, Form, Modal, Table } from "react-bootstrap";
-import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { app } from "../Firebase";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -14,6 +23,7 @@ function Income() {
   const exportsRef = useRef();
   const servicesRef = useRef();
   const hardwareRef = useRef();
+  const [incomeList, setIncomeList] = useState([])
 
   const handleShow = () => {
     setShow((s) => !s);
@@ -23,7 +33,6 @@ function Income() {
   };
 
   const handleAddIncome = () => {
-    
     const appliances = applianceRef.current.value;
     const electronics = electronicsRef.current.value;
     const incomeExport = exportsRef.current.value;
@@ -42,20 +51,43 @@ function Income() {
           services: services,
           hardware: hardware,
           timestamp: new Date().getTime(),
-        }).then(() => {
-          toast.success("income added successfuly")
-          window.location.reload();
-        }).catch((error)=>{
-            console.log(error)
-            toast.error(error.message)
         })
-
-        
+          .then(() => {
+            toast.success("income added successfuly");
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error(error.message);
+          });
       }
     });
 
     handleClose();
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      const fetchIncome = async () => {
+        try{
+        let incomeItem = [];
+        const queryDocument = query(
+          collection(db, "income"),
+          where("userID", "==", user.uid),
+          orderBy('timestamp', 'desc')
+        );
+        const querySnapShot = await getDocs(queryDocument)
+        querySnapShot.forEach((IncomeDoc) => {
+          incomeItem.push({ Id: IncomeDoc.data().incomeID, ...IncomeDoc.data() });
+        }); 
+        setIncomeList([...incomeItem]);
+      } catch(error){
+        console.error("Error fetching income data", error)
+      }
+      };
+      fetchIncome()
+    });
+  }, [auth, db]);
   return (
     <div className="income">
       <IncomeModal
@@ -81,49 +113,21 @@ function Income() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {incomeList.map((incomeItem)=>(
+            <tr key={incomeItem.Id}>
             <td>Jan</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <td>{incomeItem.appliances}</td>
+            <td>{incomeItem.electronics}</td>
+            <td>{incomeItem.incomeExport}</td>
+            <td>{incomeItem.services}</td>
+            <td>{incomeItem.hardware}</td>
           </tr>
-          <tr>
-            <td>Feb</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Mar</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Apr</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Jun</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          ))
+            }
+          
         </tbody>
       </Table>
-      <Toaster position="top-right" reverseOrder={false}/>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }
@@ -137,29 +141,24 @@ const IncomeModal = ({
   handleClose,
   ...props
 }) => {
-  const {
-    applianceRef,
-    exportsRef,
-    electronicsRef,
-    servicesRef,
-    hardwareRef,
-  } = props;
+  const { applianceRef, exportsRef, electronicsRef, servicesRef, hardwareRef } =
+    props;
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
         Add Income
       </Button>
 
-      <Modal  show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header className="bg-dark text-white">
           <Modal.Title>Income</Modal.Title>
         </Modal.Header>
         <Modal.Body className="bg-dark text-white">
           <Form id="addIncome" onSubmit={handleAddIncome}>
-            
             <Form.Group>
               <Form.Label>Appliances</Form.Label>
-              <Form.Control className="bg-dark text-white"
+              <Form.Control
+                className="bg-dark text-white"
                 ref={applianceRef}
                 autoFocus
                 placeholder="Appliances"
@@ -168,7 +167,8 @@ const IncomeModal = ({
             </Form.Group>
             <Form.Group>
               <Form.Label>Electronics</Form.Label>
-              <Form.Control className="bg-dark text-white"
+              <Form.Control
+                className="bg-dark text-white"
                 ref={electronicsRef}
                 placeholder="Electronics"
                 type="text"
@@ -176,7 +176,8 @@ const IncomeModal = ({
             </Form.Group>
             <Form.Group>
               <Form.Label>Exports</Form.Label>
-              <Form.Control className="bg-dark text-white"
+              <Form.Control
+                className="bg-dark text-white"
                 ref={exportsRef}
                 placeholder="Exports"
                 type="text"
@@ -184,7 +185,8 @@ const IncomeModal = ({
             </Form.Group>
             <Form.Group>
               <Form.Label>Services</Form.Label>
-              <Form.Control className="bg-dark text-white"
+              <Form.Control
+                className="bg-dark text-white"
                 ref={servicesRef}
                 placeholder="Services"
                 type="text"
@@ -192,7 +194,8 @@ const IncomeModal = ({
             </Form.Group>
             <Form.Group>
               <Form.Label>Hardware</Form.Label>
-              <Form.Control className="bg-dark text-white"
+              <Form.Control
+                className="bg-dark text-white"
                 ref={hardwareRef}
                 placeholder="Hardware"
                 type="text"
