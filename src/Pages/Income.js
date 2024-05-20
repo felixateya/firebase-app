@@ -24,6 +24,7 @@ function Income() {
   const servicesRef = useRef();
   const hardwareRef = useRef();
   const [incomeList, setIncomeList] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const handleShow = () => {
     setShow((s) => !s);
@@ -54,7 +55,7 @@ function Income() {
         })
           .then(() => {
             toast.success("income added successfuly");
-            window.location.reload();
+            // window.location.reload();
           })
           .catch((error) => {
             console.log(error);
@@ -65,6 +66,7 @@ function Income() {
 
     handleClose();
   };
+  
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -77,17 +79,23 @@ function Income() {
           orderBy('timestamp', 'desc')
         );
         const querySnapShot = await getDocs(queryDocument)
+        setLoading(true)
         querySnapShot.forEach((IncomeDoc) => {
           incomeItem.push({ Id: IncomeDoc.data().incomeID, ...IncomeDoc.data() });
+          
         }); 
         setIncomeList([...incomeItem]);
       } catch(error){
+        setLoading(false)
         console.error("Error fetching income data", error)
+      }
+      finally{
+        setLoading(false)
       }
       };
       fetchIncome()
     });
-  }, [auth, db]);
+  }, [auth, db, incomeList]);
   return (
     <div className="income">
       <IncomeModal
@@ -101,6 +109,7 @@ function Income() {
         servicesRef={servicesRef}
         hardwareRef={hardwareRef}
       />
+      {incomeList.length === 0 ? <h4>No income available. Add income</h4>: 
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -127,6 +136,7 @@ function Income() {
           
         </tbody>
       </Table>
+    }
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );

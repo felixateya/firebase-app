@@ -83,7 +83,6 @@ function Home() {
             navigate("/login");
           } else {
             // User is already logged in, no need to change persistence or navigate
-            console.log("User is already logged in");
           }
         });
       } catch (error) {
@@ -110,6 +109,7 @@ function Home() {
         })
         .catch((error) => {
           // An error happened.
+          console.log(error)
         });
     }, 1500);
 
