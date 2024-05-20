@@ -55,7 +55,7 @@ function Income() {
         })
           .then(() => {
             toast.success("income added successfuly");
-            // window.location.reload();
+            
           })
           .catch((error) => {
             console.log(error);
@@ -67,6 +67,8 @@ function Income() {
     handleClose();
   };
   
+
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
