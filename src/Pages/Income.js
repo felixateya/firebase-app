@@ -24,7 +24,7 @@ function Income() {
   const servicesRef = useRef();
   const hardwareRef = useRef();
   const [incomeList, setIncomeList] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [refresh, setRefresh] = useState(false)
 
   const handleShow = () => {
     setShow((s) => !s);
@@ -54,6 +54,7 @@ function Income() {
           timestamp: new Date().getTime(),
         })
           .then(() => {
+            setRefresh((prev)=> !prev)
             toast.success("income added successfuly");
             
           })
@@ -81,23 +82,24 @@ function Income() {
           orderBy('timestamp', 'desc')
         );
         const querySnapShot = await getDocs(queryDocument)
-        setLoading(true)
+        // setLoading(true)
         querySnapShot.forEach((IncomeDoc) => {
           incomeItem.push({ Id: IncomeDoc.data().incomeID, ...IncomeDoc.data() });
+          console.log(incomeItem)
           
         }); 
         setIncomeList([...incomeItem]);
       } catch(error){
-        setLoading(false)
+        // setLoading(false)
         console.error("Error fetching income data", error)
       }
-      finally{
-        setLoading(false)
-      }
+      // finally{
+      //   setLoading(false)
+      // }
       };
       fetchIncome()
     });
-  }, [auth, db, incomeList]);
+  }, [auth, db, refresh]);
   return (
     <div className="income">
       <IncomeModal
