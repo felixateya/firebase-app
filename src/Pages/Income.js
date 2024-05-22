@@ -40,6 +40,11 @@ function Income() {
     const services = servicesRef.current.value;
     const hardware = hardwareRef.current.value;
 
+    if (!appliances || !electronics || !incomeExport || !services || !hardware) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const newIncome = doc(collection(db, "income"));
