@@ -1,6 +1,6 @@
 // ProtectedRoute.js
 import React, { useEffect, useState } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { app } from '../Firebase';
 import Loader from '../Components/Loader';
@@ -8,6 +8,10 @@ const ProtectedRoute = () => {
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const auth = getAuth();
+  const navigate = useNavigate()
+  const style = {
+    backgroundColor: "#293A58",
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -19,11 +23,11 @@ const ProtectedRoute = () => {
   }, [auth]);
 
   if (loading) {
-    return <Loader/> // You can replace this with a loader/spinner component
+    return <Loader style={style}/> // You can replace this with a loader/spinner component
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return navigate('/login');
   }
 
   return <Outlet />;

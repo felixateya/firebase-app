@@ -8,6 +8,8 @@ Description: A simple firebase app that can authenticate a user and fetch user d
 - React-router-dom
 - React-icons
 - React-bootstrap
+- recharts
+- react-hot-toast
   
 ## Getting Started
 
@@ -22,7 +24,7 @@ Firebase project set up on the Firebase Console
 4. Start the development server: npm start
 
 ### Usage
-Youn can use the app to test your fiebase skills in React like displaying more user details and adding more pages.
+Youn can use the app to test your firebase skills in React like displaying more user details and adding more pages.
 
 
 

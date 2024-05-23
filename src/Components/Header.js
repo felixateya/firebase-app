@@ -7,11 +7,11 @@ function Header({ user }) {
   return (
     <header className="header">
       <h4>
-        {params.pathname  === '/' ? 'Dashboard' : params.pathname.replace("/", "")}
+        {params.pathname  === '/' ? 'dashboard' : params.pathname.replace("/", "")}
       </h4>
       <div className="all">
         {/* <div className="search">
-          <input type="search" placeholder="Search..." name="serach" />
+          <input type="search" placeholder="Search..." name="search" />
           <FaSearch />
         </div> */}
         

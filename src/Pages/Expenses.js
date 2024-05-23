@@ -158,7 +158,7 @@ const ExpensesModal = ({ setRefresh }) => {
         Add Expense
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal  show={show} onHide={handleClose}>
         <Modal.Header className="bg-dark text-white">
           <Modal.Title>Add Expense</Modal.Title>
         </Modal.Header>

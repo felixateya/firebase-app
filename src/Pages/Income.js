@@ -87,7 +87,6 @@ function Income() {
           orderBy('timestamp', 'desc')
         );
         const querySnapShot = await getDocs(queryDocument)
-        // setLoading(true)
         querySnapShot.forEach((IncomeDoc) => {
           incomeItem.push({ Id: IncomeDoc.data().incomeID, ...IncomeDoc.data() });
           console.log(incomeItem)
