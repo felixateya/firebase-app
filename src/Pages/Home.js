@@ -123,7 +123,7 @@ function Home() {
     width: '89%',
     height: "80%",
     marginTop: "10%",
-    marginLeft: "5%"
+    marginLeft: "5%",
   };
 const mainStyle = {
   backgroundColor: "#1e2c4775",
