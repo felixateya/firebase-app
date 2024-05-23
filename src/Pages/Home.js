@@ -120,8 +120,8 @@ function Home() {
 
   const style = {
     backgroundColor: "#1e2c4775",
-    width: '89%',
-    height: "80%",
+    width: '80%',
+    height: "76%",
     marginTop: "10%",
     marginLeft: "5%",
   };
