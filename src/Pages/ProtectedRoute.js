@@ -27,7 +27,7 @@ const ProtectedRoute = () => {
   }
 
   if (!isAuthenticated) {
-    return navigate('/login');
+    return navigate(-1);
   }
 
   return <Outlet />;
