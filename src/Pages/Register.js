@@ -44,6 +44,7 @@ function Register() {
             userId: user,
             userName: name,
             userEmail: email,
+            profileImage: 'https://firebasestorage.googleapis.com/v0/b/react-firebase-1bcaa.appspot.com/o/user.png?alt=media&token=66b0522e-814a-47e7-be8e-99e8d3485860'
           })
             .then(() => {
               navigate("/");

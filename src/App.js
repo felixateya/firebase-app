@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -23,6 +23,7 @@ const style = {
 };
 
 function App() {
+  const [refresh, setRefresh] = useState(false)
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader style={style} />}>
@@ -33,7 +34,7 @@ function App() {
             <Route path="/" element={<Home />}>
               {/* <Route index element={<Welcome />} /> */}
               <Route index element={<Dashboard />} />
-              <Route path="profile" element={<Profile />} />
+              <Route path="profile" element={<Profile setRefresh={setRefresh} />} />
               <Route path="income" element={<Income />} />
               <Route path="expenses" element={<Expenses />} />
               <Route path="settings" element={<Settings />} />

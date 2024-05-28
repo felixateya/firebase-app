@@ -25,6 +25,7 @@ function Home() {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [profile, setProfile] = useState('')
   // const [searchParams, setSearchParams] = useSearchParams("")
 
   // const handleClose = () => setShow(false);
@@ -61,6 +62,8 @@ function Home() {
           const querySnapShot = await getDocs(queryDocument);
           querySnapShot.forEach((userDoc) => {
             const username = userDoc.data().userName;
+            const profileImg = userDoc.data().profileImage
+            setProfile(profileImg)
             document.title = `Fiscall LLC | ${username}`;
             setUser(username);
             // setSearchParams(`${username}:${user.uid}`)
@@ -69,7 +72,7 @@ function Home() {
         FetchUser();
       }
     });
-  }, [auth, db, navigate]);
+  }, [auth, db, navigate, profile]);
 
   useEffect(() => {
     const setSessionPersistence = async () => {
@@ -132,7 +135,7 @@ const mainStyle = {
     <div className="home">
       <Navbar signOut={handleShow} />
       <main>
-        <Header user={user} />
+        <Header user={user} profile={profile}/>
         <Suspense fallback={<Loader style={style} />}>
           <Outlet />
         </Suspense>

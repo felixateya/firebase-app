@@ -1,7 +1,7 @@
 import { useResolvedPath } from "react-router";
 import { FaRegBell } from "react-icons/fa";
 
-function Header({ user }) {
+function Header({ user, profile }) {
   const params = useResolvedPath();
 
   return (
@@ -17,7 +17,7 @@ function Header({ user }) {
         
         <FaRegBell />
         <div className="profile">
-          <h5 className="img"> </h5>
+          {!profile ? <p>...</p> : <img className="img" src={profile} alt='profile-pic'/>}
           <p>{user}</p>
         </div>
       </div>
