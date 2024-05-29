@@ -554,6 +554,7 @@ border: 2px solid #f2f5f5;
   transition: width 0.6s ease-in-out;
   width: 85%;
   height: 100vh;
+  padding: 20px;
 }
 .income {
   width: 100%;

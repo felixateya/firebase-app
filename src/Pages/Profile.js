@@ -17,9 +17,9 @@ import {
 } from "firebase/firestore";
 import { app } from "../Firebase";
 import toast, { Toaster } from "react-hot-toast";
-import { Form } from "react-bootstrap";
+import { Form, ProgressBar } from "react-bootstrap";
 
-const Profile = ({setRefresh}) => {
+const Profile = ({setProfile, profile}) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [user, setUser] = useState(null);
@@ -99,7 +99,7 @@ const Profile = ({setRefresh}) => {
 
         toast.success("Profile image updated successfully!");
         // window.location.reload();
-        setRefresh((is)=> !is)
+        setProfile(downloadURL)
       } else {
         console.error("User document not found for UID:", user.uid);
         toast.error("User document not found.");
@@ -111,14 +111,14 @@ const Profile = ({setRefresh}) => {
   };
 
   return (
-    <div>
+    <div className="profile-page">
       <Form.Control
         type="file"
         id="profileImage"
         onChange={handleUpload}
         disabled={uploading}
       />
-      {uploading && <p>Uploading: {progress.toFixed(2)}%</p>}
+      {uploading && <ProgressBar striped now={progress} label={`${progress}%`}></ProgressBar>}
       <Toaster position="top-center" reverseOrder={false} />
     </div>
   );

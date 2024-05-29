@@ -20,12 +20,12 @@ import {
 import { app } from "../Firebase";
 import Header from "../Components/Header";
 
-function Home() {
+function Home({profile, setProfile}) {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState("");
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const [profile, setProfile] = useState('')
+  
   // const [searchParams, setSearchParams] = useSearchParams("")
 
   // const handleClose = () => setShow(false);

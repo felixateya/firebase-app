@@ -23,7 +23,7 @@ const style = {
 };
 
 function App() {
-  const [refresh, setRefresh] = useState(false)
+  const [profile, setProfile] = useState(null)
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader style={style} />}>
@@ -31,10 +31,10 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Home />}>
+            <Route path="/" element={<Home setProfile={setProfile} profile={profile} />}>
               {/* <Route index element={<Welcome />} /> */}
               <Route index element={<Dashboard />} />
-              <Route path="profile" element={<Profile setRefresh={setRefresh} />} />
+              <Route path="profile" element={<Profile setProfile={setProfile} profile={profile} />} />
               <Route path="income" element={<Income />} />
               <Route path="expenses" element={<Expenses />} />
               <Route path="settings" element={<Settings />} />
