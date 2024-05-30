@@ -10,7 +10,7 @@ import {
   doc
 } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
-import { Button, Table, Form, Modal } from "react-bootstrap";
+import { Button, Table, Form, Modal, Spinner} from "react-bootstrap";
 import { app } from "../Firebase";
 import toast, { Toaster } from "react-hot-toast";
  
@@ -73,7 +73,7 @@ function Expenses() {
         <tbody>
           {loading ? (
             <tr>
-              <td colSpan="6">Loading...</td>
+              <td colSpan="6"><Spinner animation="grow" /></td>
             </tr>
           ) : (
             expenseList.map((expenseItem) => (

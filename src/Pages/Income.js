@@ -1,4 +1,4 @@
-import { Button, Form, Modal, Table } from "react-bootstrap";
+import { Button, Form, Modal, Table, Spinner } from "react-bootstrap";
 import {
   collection,
   doc,
@@ -25,6 +25,7 @@ function Income() {
   const hardwareRef = useRef();
   const [incomeList, setIncomeList] = useState([])
   const [refresh, setRefresh] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleShow = () => {
     setShow((s) => !s);
@@ -79,6 +80,7 @@ function Income() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       const fetchIncome = async () => {
+        setLoading(true)
         try{
         let incomeItem = [];
         const queryDocument = query(
@@ -97,9 +99,9 @@ function Income() {
         // setLoading(false)
         console.error("Error fetching income data", error)
       }
-      // finally{
-      //   setLoading(false)
-      // }
+      finally{
+        setLoading(false)
+      }
       };
       fetchIncome()
     });
@@ -117,7 +119,7 @@ function Income() {
         servicesRef={servicesRef}
         hardwareRef={hardwareRef}
       />
-      {incomeList.length === 0 ? <h4>No income available. Add income</h4>: 
+       
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -130,7 +132,14 @@ function Income() {
           </tr>
         </thead>
         <tbody>
-          {incomeList.map((incomeItem)=>(
+        {loading ? (
+            <tr>
+              <td colSpan="6"><td colSpan="6"><Spinner animation="grow" /></td></td>
+            </tr>
+          ) : (
+
+          
+          incomeList.map((incomeItem)=>(
             <tr key={incomeItem.Id}>
             <td>Jan</td>
             <td>{incomeItem.appliances}</td>
@@ -140,11 +149,11 @@ function Income() {
             <td>{incomeItem.hardware}</td>
           </tr>
           ))
-            }
+            )}
           
         </tbody>
       </Table>
-    }
+    
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
