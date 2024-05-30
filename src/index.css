@@ -25,3 +25,11 @@ body {
   background-color: #7485F1;
   border-radius: 12px;
 }
+
+button:disabled{
+  cursor: not-allowed;
+  &&:hover{
+    background-color: grey;
+    color: #f2f5f5;
+  }
+}

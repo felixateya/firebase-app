@@ -1,5 +1,6 @@
 import { useResolvedPath } from "react-router";
 import { FaRegBell } from "react-icons/fa";
+import {Spinner} from 'react-bootstrap'
 
 function Header({ user, profile }) {
   const params = useResolvedPath();
@@ -17,7 +18,7 @@ function Header({ user, profile }) {
         
         <FaRegBell />
         <div className="profile">
-          {!profile ? <p>...</p> : <img className="img" src={profile} alt='profile-pic'/>}
+{profile ? <img className="img" src={profile} alt='profile-pic'/> : <Spinner animation="grow" />}
           <p>{user}</p>
         </div>
       </div>

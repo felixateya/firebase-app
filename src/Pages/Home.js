@@ -72,7 +72,7 @@ function Home({profile, setProfile}) {
         FetchUser();
       }
     });
-  }, [auth, db, navigate, profile]);
+  }, [auth, db, navigate, setProfile]);
 
   useEffect(() => {
     const setSessionPersistence = async () => {
@@ -108,6 +108,7 @@ function Home({profile, setProfile}) {
           // Sign-out successful.
           document.title = "Fiscall LLC";
           setShow(false);
+          setProfile(null)
           navigate("/login");
         })
         .catch((error) => {
