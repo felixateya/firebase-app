@@ -9,7 +9,7 @@ import {
   setDoc,
   doc
 } from "firebase/firestore";
-import { useState, useEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 import { Button, Table, Form, Modal, Spinner} from "react-bootstrap";
 import { app } from "../Firebase";
 import toast, { Toaster } from "react-hot-toast";
@@ -22,7 +22,7 @@ function Expenses() {
   const [expenseList, setExpenseList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchExpenses = async () => {
       setLoading(true);
       try {

@@ -10,7 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { app } from "../Firebase";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -77,7 +77,7 @@ function Income() {
 
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
       const fetchIncome = async () => {
         setLoading(true)

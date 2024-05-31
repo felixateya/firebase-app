@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useLayoutEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Loader from "../Components/Loader";
@@ -36,7 +36,7 @@ function Home({profile, setProfile}) {
   const auth = getAuth();
   const db = getFirestore(app);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user === null) {
         setPersistence(auth, browserSessionPersistence)
