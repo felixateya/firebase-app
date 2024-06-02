@@ -226,15 +226,14 @@ border: 2px solid #f2f5f5;
 }
 
 .navbar {
-  width: max-content;
+  width: 56px;
   position: relative;
   height: 100%;
-  background-color: #926049a2;
   background-color: #293a58;
   backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
-  transition: width 0.6s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .navbar.open {
@@ -246,8 +245,10 @@ border: 2px solid #f2f5f5;
   font-weight: 800;
   font-size: 30px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 2px;
+  overflow: hidden;
   cursor: pointer;
   text-decoration: none;
   transition: 0.2s ease-in-out;
@@ -256,7 +257,7 @@ border: 2px solid #f2f5f5;
 
 .logo img{
   width: 40px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .extend {
@@ -283,12 +284,17 @@ border: 2px solid #f2f5f5;
   background-color: #37b9f1;
 }
 .link {
+  /* width: 100%; */
   display: none;
-  transition: 0.8s ease-in-out;
+  /* transform: translateX(100%); */
+  /* overflow: hidden; */
 }
 
 .flex {
-  display: flex;
+  display: block;
+  /* transform: translateX(0); */
+  /* transition: all 0.6s ease-in-out; */
+  
 }
 
 .logo:hover {
@@ -325,6 +331,7 @@ border: 2px solid #f2f5f5;
 }
 
 .links  a {
+  overflow: hidden;
   text-decoration: none;
   font-size: 16px;
   display: flex;
@@ -333,7 +340,7 @@ border: 2px solid #f2f5f5;
   color: #f2f5f5;
   margin-top: 15px;
   font-weight: 800;
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
   border-radius: 6px;
   padding: 6px;
 }
