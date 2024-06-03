@@ -18,7 +18,7 @@ function Header({ user, profile }) {
         
         <FaRegBell />
         <div className="profile">
-{profile ? <img className="img" src={profile} alt='profile-pic'/> : <Spinner animation="grow" />}
+{profile ? <img className="img" src={profile} alt='profile-pic'/> : <Spinner animation="border" />}
           <p>{user}</p>
         </div>
       </div>

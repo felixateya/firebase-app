@@ -1,4 +1,4 @@
-import { getAuth} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import {
   collection,
   getFirestore,
@@ -7,13 +7,14 @@ import {
   where,
   getDocs,
   setDoc,
-  doc
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { useState, useLayoutEffect, useRef } from "react";
-import { Button, Table, Form, Modal, Spinner} from "react-bootstrap";
+import { Button, Table, Form, Modal, Spinner } from "react-bootstrap";
 import { app } from "../Firebase";
+import { FaTrashAlt } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
- 
 
 function Expenses() {
   const auth = getAuth();
@@ -56,6 +57,16 @@ function Expenses() {
     };
   }, [auth, db, refresh]);
 
+  const handleDelete = (id) => {
+    deleteDoc(doc(db, "expenses", id))
+      .then(() => {
+        setRefresh((ref) => !ref);
+        toast.success("Deleted succesfully");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <div className="expenses">
       <ExpensesModal setRefresh={setRefresh} />
@@ -68,12 +79,15 @@ function Expenses() {
             <th>Exports</th>
             <th>Services</th>
             <th>Hardware</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {loading ? (
             <tr>
-              <td colSpan="6"><Spinner animation="grow" /></td>
+              <td colSpan="6">
+                <Spinner animation="border" />
+              </td>
             </tr>
           ) : (
             expenseList.map((expenseItem) => (
@@ -84,6 +98,15 @@ function Expenses() {
                 <td>{expenseItem.incomeExport}</td>
                 <td>{expenseItem.services}</td>
                 <td>{expenseItem.hardware}</td>
+                <td>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleDelete(expenseItem.Id)}
+                  >
+                    <FaTrashAlt />
+                  </Button>
+                </td>
               </tr>
             ))
           )}
@@ -95,11 +118,6 @@ function Expenses() {
 }
 
 export default Expenses;
-
-
-
-
-
 
 const ExpensesModal = ({ setRefresh }) => {
   const [show, setShow] = useState(false);
@@ -123,7 +141,13 @@ const ExpensesModal = ({ setRefresh }) => {
     const services = servicesRef.current.value;
     const hardware = hardwareRef.current.value;
 
-    if (!appliances || !electronics || !incomeExport || !services || !hardware) {
+    if (
+      !appliances ||
+      !electronics ||
+      !incomeExport ||
+      !services ||
+      !hardware
+    ) {
       toast.error("Please fill in all fields");
       return;
     }
@@ -158,7 +182,7 @@ const ExpensesModal = ({ setRefresh }) => {
         Add Expense
       </Button>
 
-      <Modal  show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header className="bg-dark text-white">
           <Modal.Title>Add Expense</Modal.Title>
         </Modal.Header>
@@ -224,5 +248,3 @@ const ExpensesModal = ({ setRefresh }) => {
     </>
   );
 };
-
-

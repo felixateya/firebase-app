@@ -8,11 +8,13 @@ import {
   query,
   setDoc,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 import { app } from "../Firebase";
 import { useLayoutEffect, useRef, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import toast, { Toaster } from "react-hot-toast";
+import { FaTrashAlt } from "react-icons/fa";
 
 function Income() {
   const db = getFirestore(app);
@@ -23,8 +25,8 @@ function Income() {
   const exportsRef = useRef();
   const servicesRef = useRef();
   const hardwareRef = useRef();
-  const [incomeList, setIncomeList] = useState([])
-  const [refresh, setRefresh] = useState(false)
+  const [incomeList, setIncomeList] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleShow = () => {
@@ -41,7 +43,13 @@ function Income() {
     const services = servicesRef.current.value;
     const hardware = hardwareRef.current.value;
 
-    if (!appliances || !electronics || !incomeExport || !services || !hardware) {
+    if (
+      !appliances ||
+      !electronics ||
+      !incomeExport ||
+      !services ||
+      !hardware
+    ) {
       toast.error("Please fill in all fields");
       return;
     }
@@ -60,9 +68,8 @@ function Income() {
           timestamp: new Date().getTime(),
         })
           .then(() => {
-            setRefresh((prev)=> !prev)
+            setRefresh((prev) => !prev);
             toast.success("income added successfuly");
-            
           })
           .catch((error) => {
             console.log(error);
@@ -73,39 +80,48 @@ function Income() {
 
     handleClose();
   };
-  
-
-
 
   useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
       const fetchIncome = async () => {
-        setLoading(true)
-        try{
-        let incomeItem = [];
-        const queryDocument = query(
-          collection(db, "income"),
-          where("userID", "==", user.uid),
-          orderBy('timestamp', 'desc')
-        );
-        const querySnapShot = await getDocs(queryDocument)
-        querySnapShot.forEach((IncomeDoc) => {
-          incomeItem.push({ Id: IncomeDoc.data().incomeID, ...IncomeDoc.data() });
-          console.log(incomeItem)
-          
-        }); 
-        setIncomeList([...incomeItem]);
-      } catch(error){
-        // setLoading(false)
-        console.error("Error fetching income data", error)
-      }
-      finally{
-        setLoading(false)
-      }
+        setLoading(true);
+        try {
+          let incomeItem = [];
+          const queryDocument = query(
+            collection(db, "income"),
+            where("userID", "==", user.uid),
+            orderBy("timestamp", "desc")
+          );
+          const querySnapShot = await getDocs(queryDocument);
+          querySnapShot.forEach((IncomeDoc) => {
+            incomeItem.push({
+              Id: IncomeDoc.data().incomeID,
+              ...IncomeDoc.data(),
+            });
+            console.log(incomeItem);
+          });
+          setIncomeList([...incomeItem]);
+        } catch (error) {
+          // setLoading(false)
+          console.error("Error fetching income data", error);
+        } finally {
+          setLoading(false);
+        }
       };
-      fetchIncome()
+      fetchIncome();
     });
   }, [auth, db, refresh]);
+
+  const handleDelete = (id) => {
+    deleteDoc(doc(db, "income", id))
+      .then(() => {
+        setRefresh((ref) => !ref);
+        toast.success("Deleted succesfully");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <div className="income">
       <IncomeModal
@@ -119,7 +135,7 @@ function Income() {
         servicesRef={servicesRef}
         hardwareRef={hardwareRef}
       />
-       
+
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -129,31 +145,42 @@ function Income() {
             <th>Exports</th>
             <th>services</th>
             <th>hardware</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-        {loading ? (
+          {loading ? (
             <tr>
-              <td colSpan="6"><td colSpan="6"><Spinner animation="grow" /></td></td>
+              <td colSpan="6">
+                <td colSpan="6">
+                  <Spinner animation="border" />
+                </td>
+              </td>
             </tr>
           ) : (
-
-          
-          incomeList.map((incomeItem)=>(
-            <tr key={incomeItem.Id}>
-            <td>Jan</td>
-            <td>{incomeItem.appliances}</td>
-            <td>{incomeItem.electronics}</td>
-            <td>{incomeItem.incomeExport}</td>
-            <td>{incomeItem.services}</td>
-            <td>{incomeItem.hardware}</td>
-          </tr>
-          ))
-            )}
-          
+            incomeList.map((incomeItem) => (
+              <tr key={incomeItem.Id}>
+                <td>Jan</td>
+                <td>{incomeItem.appliances}</td>
+                <td>{incomeItem.electronics}</td>
+                <td>{incomeItem.incomeExport}</td>
+                <td>{incomeItem.services}</td>
+                <td>{incomeItem.hardware}</td>
+                <td>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleDelete(incomeItem.Id)}
+                  >
+                    <FaTrashAlt />
+                  </Button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </Table>
-    
+
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
