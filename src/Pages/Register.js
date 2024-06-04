@@ -69,7 +69,7 @@ function Register() {
 
   return (
     <div className="register">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" id="signup-form" name="signup-form" onSubmit={handleSubmit}>
       <img src={logo} alt="logo"/>
         <h2>Create Account</h2>
 
@@ -80,6 +80,7 @@ function Register() {
           autoFocus
           placeholder="Enter your full name"
           required
+          id="name"
         />
         <input
           type="email"
@@ -87,6 +88,7 @@ function Register() {
           ref={emailRef}
           placeholder="Enter your email address"
           required
+          id="email"
         />
         <div className="visible-eye">
         <input
@@ -95,6 +97,7 @@ function Register() {
           placeholder="Set your password"
           required
           autoComplete="true"
+          id="password"
         />
         <h6>
           {visible ? (

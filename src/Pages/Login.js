@@ -76,7 +76,7 @@ function Login() {
       <div className="addition">
         <h1>Fiscall LLC</h1>
       </div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" id='login-form' name='login-form' onSubmit={handleSubmit}>
         <img src={logo} alt="logo" />
         <h2>Log In</h2>
         <input
@@ -84,6 +84,7 @@ function Login() {
           autoFocus
           autoComplete="true"
           name="email"
+          id="email"
           required
           ref={emailRef}
           placeholder="Enter your email address"
@@ -94,6 +95,7 @@ function Login() {
             autoComplete="true"
             required
             ref={passwordRef}
+            id='password'
             placeholder="Enter your password"
           />
           <h6>
