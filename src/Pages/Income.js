@@ -81,36 +81,40 @@ function Income() {
     handleClose();
   };
 
+  const fetchIncome = useCallback(async (user) => {
+    setLoading(true);
+    try {
+      let incomeItem = [];
+      const queryDocument = query(
+        collection(db, "income"),
+        where("userID", "==", user.uid),
+        orderBy("timestamp", "desc")
+      );
+      const querySnapShot = await getDocs(queryDocument);
+      querySnapShot.forEach((IncomeDoc) => {
+        incomeItem.push({
+          Id: IncomeDoc.data().incomeID,
+          ...IncomeDoc.data(),
+        });
+      });
+      setIncomeList(incomeItem);
+    } catch (error) {
+      console.error("Error fetching income data", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [db]);
+
   useLayoutEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      const fetchIncome = async () => {
-        setLoading(true);
-        try {
-          let incomeItem = [];
-          const queryDocument = query(
-            collection(db, "income"),
-            where("userID", "==", user.uid),
-            orderBy("timestamp", "desc")
-          );
-          const querySnapShot = await getDocs(queryDocument);
-          querySnapShot.forEach((IncomeDoc) => {
-            incomeItem.push({
-              Id: IncomeDoc.data().incomeID,
-              ...IncomeDoc.data(),
-            });
-            console.log(incomeItem);
-          });
-          setIncomeList([...incomeItem]);
-        } catch (error) {
-          // setLoading(false)
-          console.error("Error fetching income data", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchIncome();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchIncome(user);
+      }
     });
-  }, [auth, db, refresh]);
+
+    // Cleanup the listener on unmount
+    return () => unsubscribe();
+  }, [auth, fetchIncome, refresh]);
 
   const handleDelete = (id) => {
     deleteDoc(doc(db, "income", id))
